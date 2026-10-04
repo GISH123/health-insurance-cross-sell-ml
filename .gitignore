@@ -4,3 +4,6 @@ data/processed/
 __pycache__/
 .ipynb_checkpoints/
 *.pyc
+*.pyo
+*.pyd
+.pytest_cache/
