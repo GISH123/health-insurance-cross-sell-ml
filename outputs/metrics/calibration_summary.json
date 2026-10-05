@@ -1,0 +1,76 @@
+{
+  "probability_bin_edges": [
+    0.0,
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.25,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.8,
+    1.0
+  ],
+  "interval_method": "95% Wilson observed-rate interval; descriptive bin support, not a calibration guarantee",
+  "sparse_plot_marker_count_threshold": 100,
+  "models": {
+    "logistic": {
+      "weighted_absolute_bin_gap": 0.0055858696909986336,
+      "log_loss": 0.26834523630426715,
+      "brier_score": 0.08786735096988833,
+      "populated_bins": 10,
+      "sparse_bins": [
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6,
+          "count": 53,
+          "responders": 19,
+          "mean_predicted_probability": 0.5201778496208274,
+          "observed_response_rate": 0.3584905660377358,
+          "observed_minus_predicted": -0.16168728358309153,
+          "observed_rate_wilson_lower_95": 0.2430195255280876,
+          "observed_rate_wilson_upper_95": 0.49308858444640524
+        },
+        {
+          "bin_lower": 0.6,
+          "bin_upper": 0.8,
+          "count": 1,
+          "responders": 0,
+          "mean_predicted_probability": 0.6035909642870789,
+          "observed_response_rate": 0.0,
+          "observed_minus_predicted": -0.6035909642870789,
+          "observed_rate_wilson_lower_95": 0.0,
+          "observed_rate_wilson_upper_95": 0.7934506856227626
+        }
+      ]
+    },
+    "catboost": {
+      "weighted_absolute_bin_gap": 0.0024546414735011103,
+      "log_loss": 0.2639992236972073,
+      "brier_score": 0.08639101705449588,
+      "populated_bins": 10,
+      "sparse_bins": [
+        {
+          "bin_lower": 0.6,
+          "bin_upper": 0.8,
+          "count": 21,
+          "responders": 14,
+          "mean_predicted_probability": 0.6599109682634597,
+          "observed_response_rate": 0.6666666666666666,
+          "observed_minus_predicted": 0.006755698403206889,
+          "observed_rate_wilson_lower_95": 0.4537345197425524,
+          "observed_rate_wilson_upper_95": 0.8280524739491653
+        }
+      ]
+    }
+  },
+  "findings": [
+    "CatBoost has lower holdout log loss and Brier score and a smaller weighted absolute bin gap in these predeclared bins; this does not establish calibration in future campaigns.",
+    "Logistic bin [0.4,0.5): 1602 observations, mean predicted 0.42867 versus observed 0.37578, suggesting overprediction in this segment.",
+    "Logistic bins above 0.5 have 53 and 1 observations; CatBoost [0.6,0.8) has 21. Sparse tails are not reliable evidence of calibration.",
+    "Similar mean prediction and overall validation prevalence alone does not imply good calibration. Brier and log loss jointly reflect probability estimation and discrimination.",
+    "Neither model was recalibrated. Empty bins are omitted; sparse bins are marked separately and not joined to reliability lines."
+  ]
+}

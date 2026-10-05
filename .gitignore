@@ -4,3 +4,10 @@ data/processed/
 __pycache__/
 .ipynb_checkpoints/
 *.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+outputs/logs/
+outputs/metrics/holdout_indices.csv
+outputs/figures/matplotlib_config/
+outputs/metrics/model_family_predictions.npz

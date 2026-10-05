@@ -1,0 +1,57 @@
+{
+  "tests": {
+    "command": [
+      "C:\\Users\\User\\orca\\workspaces\\health-insurance-cross-sell-ml\\loggerhead\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_preprocessing_is_fitted_on_training_only (test_baseline.BaselineTests.test_preprocessing_is_fitted_on_training_only) ... ok\ntest_split_excludes_id_and_target_from_predictors (test_baseline.BaselineTests.test_split_excludes_id_and_target_from_predictors) ... ok\ntest_split_is_reproducible_and_stratified (test_baseline.BaselineTests.test_split_is_reproducible_and_stratified) ... ok\ntest_top_k_metrics_uses_ceil_and_correct_denominators (test_baseline.BaselineTests.test_top_k_metrics_uses_ceil_and_correct_denominators) ... ok\ntest_unseen_sales_channel_does_not_crash (test_baseline.BaselineTests.test_unseen_sales_channel_does_not_crash) ... ok\ntest_small_fixture_trains_scores_and_excludes_id (test_catboost.CatBoostTests.test_small_fixture_trains_scores_and_excludes_id) ... ok\ntest_unseen_categories_and_numeric_code_representations (test_catboost.CatBoostTests.test_unseen_categories_and_numeric_code_representations) ... ok\ntest_validation_is_not_supplied_to_fit (test_catboost.CatBoostTests.test_validation_is_not_supplied_to_fit) ... ok\ntest_ap_is_named_correctly_and_probability_quantiles_present (test_model_comparison.ComparisonTests.test_ap_is_named_correctly_and_probability_quantiles_present) ... ok\ntest_calibration_omits_empty_bins_and_counts_all_rows (test_model_comparison.ComparisonTests.test_calibration_omits_empty_bins_and_counts_all_rows) ... ok\ntest_calibration_singleton_does_not_imply_zero_uncertainty (test_model_comparison.ComparisonTests.test_calibration_singleton_does_not_imply_zero_uncertainty) ... ok\ntest_cv_fit_calls_use_fold_training_rows_only (test_model_comparison.ComparisonTests.test_cv_fit_calls_use_fold_training_rows_only) ... ok\ntest_folds_are_stratified_and_cover_each_row_once (test_model_comparison.ComparisonTests.test_folds_are_stratified_and_cover_each_row_once) ... ok\ntest_logistic_handles_both_known_test_only_channel_codes (test_model_comparison.ComparisonTests.test_logistic_handles_both_known_test_only_channel_codes) ... ok\ntest_models_use_identical_holdout_indices (test_model_comparison.ComparisonTests.test_models_use_identical_holdout_indices) ... ok\ntest_real_cv_preprocessing_is_fold_local (test_model_comparison.ComparisonTests.test_real_cv_preprocessing_is_fold_local) ... ok\n\n----------------------------------------------------------------------\nRan 16 tests in 0.965s\n\nOK\n"
+  },
+  "git_diff_check": {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "git_status": {
+    "command": [
+      "git",
+      "status",
+      "--short",
+      "--untracked-files=all"
+    ],
+    "returncode": 0,
+    "stdout": "?? outputs/figures/calibration.png\n?? outputs/figures/matplotlib_config/fontlist-v3.11.0.json\n?? outputs/logs/overnight_catboost_robustness.log\n?? outputs/metrics/baseline_integrity.json\n?? outputs/metrics/calibration.csv\n?? outputs/metrics/calibration_summary.json\n?? outputs/metrics/catboost_feature_importance.csv\n?? outputs/metrics/catboost_holdout.json\n?? outputs/metrics/catboost_parameters.json\n?? outputs/metrics/cv_results.csv\n?? outputs/metrics/cv_summary.csv\n?? outputs/metrics/holdout_indices.csv\n?? outputs/metrics/logistic_holdout.json\n?? outputs/metrics/run_manifest.json\n?? outputs/metrics/topk_comparison.csv\n?? outputs/metrics/verification.json\n?? src/compare_models.py\n?? src/data.py\n?? src/evaluate.py\n?? src/train.py\n?? src/train_catboost.py\n?? tests/test_baseline.py\n?? tests/test_catboost.py\n?? tests/test_model_comparison.py\n",
+    "stderr": ""
+  },
+  "artifact_checks": {
+    "holdout_rows_identical": true,
+    "holdout_index_file_matches": true,
+    "cv_all_ten_fits": true,
+    "cv_identical_fold_indices": true,
+    "cv_fold_local_numeric_means": true,
+    "cv_cat_training_row_counts": true,
+    "cv_summary_mean_std": true,
+    "calibration_count_totals": true,
+    "calibration_no_empty_bins": true,
+    "calibration_weighted_means": true,
+    "calibration_wilson_contains_observed": true,
+    "topk_consistency": true,
+    "importance_normalized": true,
+    "fixed_catboost_600_no_selection": true,
+    "raw_csv_hashes_unchanged": true,
+    "no_training_warnings": true,
+    "untracked_source_whitespace_clean": true
+  }
+}
