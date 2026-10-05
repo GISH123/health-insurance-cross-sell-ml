@@ -1,0 +1,170 @@
+{
+  "best_single_by_mean_cv_ap": "catboost",
+  "improvement_over_catboost": {
+    "roc_auc": {
+      "mean_delta": 0.0,
+      "std_delta": 0.0,
+      "reference_std": 0.0012629083082758015,
+      "per_fold_deltas": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "average_precision": {
+      "mean_delta": 0.0,
+      "std_delta": 0.0,
+      "reference_std": 0.0029794446262904556,
+      "per_fold_deltas": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "top_10_lift": {
+      "mean_delta": 0.0,
+      "std_delta": 0.0,
+      "reference_std": 0.027194431539422238,
+      "per_fold_deltas": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "top_10_responder_capture_rate": {
+      "mean_delta": 0.0,
+      "std_delta": 0.0,
+      "reference_std": 0.0027210944334380024,
+      "per_fold_deltas": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "classification": "CatBoost remains the strongest single under mean CV AP; no improvement over itself.",
+  "ensemble_comparisons": {
+    "ensemble_equal_boost": {
+      "versus": "catboost",
+      "paired_deltas": {
+        "roc_auc": {
+          "mean_delta": -0.00016098696650757027,
+          "std_delta": 0.0001719053984314999,
+          "reference_std": 0.0012629083082758015,
+          "per_fold_deltas": [
+            3.218506175228786e-05,
+            -0.0001250670302049839,
+            -0.0004399329339432878,
+            -0.0001525921482853354,
+            -0.00011952778185653212
+          ]
+        },
+        "average_precision": {
+          "mean_delta": -0.0008284222823416898,
+          "std_delta": 0.0010681792633005609,
+          "reference_std": 0.0029794446262904556,
+          "per_fold_deltas": [
+            0.0004930669594563897,
+            -0.0012713087605968898,
+            -0.002300006499804441,
+            -0.0009062121279072577,
+            -0.00015765098285625
+          ]
+        },
+        "top_10_lift": {
+          "mean_delta": -0.007064110059380546,
+          "std_delta": 0.012879496153214773,
+          "reference_std": 0.027194431539422238,
+          "per_fold_deltas": [
+            -0.025687734218124536,
+            0.004281289036354163,
+            -0.012843867109062046,
+            0.005351611295442371,
+            -0.006421849301512683
+          ]
+        },
+        "top_10_responder_capture_rate": {
+          "mean_delta": -0.0007064868336544517,
+          "std_delta": 0.0012880846890594123,
+          "reference_std": 0.0027210944334380024,
+          "per_fold_deltas": [
+            -0.0025690430314707635,
+            0.0004281738385784606,
+            -0.0012845215157353818,
+            0.0005352172982230896,
+            -0.0006422607578676631
+          ]
+        }
+      },
+      "holdout_ap_and_capture_improve": false,
+      "complexity_justified_by_gain_rule": false
+    },
+    "ensemble_cat_light_50_50": {
+      "versus": "catboost",
+      "paired_deltas": {
+        "roc_auc": {
+          "mean_delta": 8.324507450159224e-05,
+          "std_delta": 0.00013978568014517105,
+          "reference_std": 0.0012629083082758015,
+          "per_fold_deltas": [
+            0.0002455421392714152,
+            0.00013166521594587532,
+            -0.00013798570969825175,
+            0.00010394483318132419,
+            7.305889380759822e-05
+          ]
+        },
+        "average_precision": {
+          "mean_delta": 5.747862457182729e-05,
+          "std_delta": 0.0009194787363215575,
+          "reference_std": 0.0029794446262904556,
+          "per_fold_deltas": [
+            0.001422506645488153,
+            -0.00027339724666691767,
+            -0.0011052650333520653,
+            -3.434023320353363e-05,
+            0.00027788899059350003
+          ]
+        },
+        "top_10_lift": {
+          "mean_delta": -0.0027828266398942426,
+          "std_delta": 0.013295279408021785,
+          "reference_std": 0.027194431539422238,
+          "per_fold_deltas": [
+            -0.016054833886327557,
+            0.0,
+            -0.011773544849973838,
+            0.018195478404505305,
+            -0.004281232867675122
+          ]
+        },
+        "top_10_responder_capture_rate": {
+          "mean_delta": -0.0002783129950759911,
+          "std_delta": 0.0013296676417773772,
+          "reference_std": 0.0027210944334380024,
+          "per_fold_deltas": [
+            -0.0016056518946692133,
+            0.0,
+            -0.0011774780560907527,
+            0.0018197388139584714,
+            -0.0004281738385784606
+          ]
+        }
+      },
+      "holdout_ap_and_capture_improve": true,
+      "complexity_justified_by_gain_rule": false
+    }
+  },
+  "interview_take_home": "catboost",
+  "production_oriented_simplicity": "catboost",
+  "kaggle_style_if_roc_auc_is_objective": "ensemble_cat_light_50_50",
+  "rule_note": "Gain rule is conservative/descriptive, not a significance test or a business ROI threshold. Fold scores are dependent. No independent test or leaderboard was used."
+}

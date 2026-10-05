@@ -1,0 +1,396 @@
+{
+  "logistic": {
+    "validation_count": 76222,
+    "responders": 9342,
+    "overall_response_rate": 0.12256303954238934,
+    "roc_auc": 0.8500033851213687,
+    "average_precision": 0.33832130516334624,
+    "reporting_threshold": 0.5,
+    "precision": 0.35185185185185186,
+    "recall": 0.0020338257332476986,
+    "f1": 0.004044274159216688,
+    "confusion_matrix_tn_fp_fn_tp": [
+      [
+        66845,
+        35
+      ],
+      [
+        9323,
+        19
+      ]
+    ],
+    "probability_summary": {
+      "min": 4.762773935230991e-05,
+      "p01": 0.00016091785492582269,
+      "p25": 0.0005481740588136558,
+      "median": 0.04193672597897275,
+      "mean": 0.12224066847650637,
+      "p75": 0.25654541031089795,
+      "p99": 0.4260154154445,
+      "max": 0.6035909642870789,
+      "p05": 0.00029534184438597826,
+      "p95": 0.3673694443058549
+    },
+    "ranking": {
+      "top_5_pct": {
+        "selected_count": 3812,
+        "responders_captured": 1408,
+        "responder_capture_rate": 0.15071719117961893,
+        "response_rate": 0.36935991605456453,
+        "lift": 3.013632147453545
+      },
+      "top_10_pct": {
+        "selected_count": 7623,
+        "responders_captured": 2765,
+        "responder_capture_rate": 0.29597516591736245,
+        "response_rate": 0.3627180899908173,
+        "lift": 2.959441046379798
+      },
+      "top_20_pct": {
+        "selected_count": 15245,
+        "responders_captured": 5239,
+        "responder_capture_rate": 0.5608006850781417,
+        "response_rate": 0.3436536569367006,
+        "lift": 2.8038930677616345
+      }
+    },
+    "log_loss": 0.26834523630426715,
+    "brier_score": 0.08786735096988833,
+    "threshold_note": "Threshold 0.5 diagnostic only",
+    "fit_and_score_seconds": 3.3555793999985326,
+    "warnings": [],
+    "training_count": 304887,
+    "training_index_sha256": "f6195f3d12b926793ecb33207c9795fb7547d1d2ace4f1b796dec4cd0fddacc0",
+    "validation_index_sha256": "d41cffcebdc47873501b2e7e1a69ccc6d73c7d083af2a857cb1af33a6536ab7a"
+  },
+  "catboost": {
+    "validation_count": 76222,
+    "responders": 9342,
+    "overall_response_rate": 0.12256303954238934,
+    "roc_auc": 0.8586921610000215,
+    "average_precision": 0.3709761097553016,
+    "reporting_threshold": 0.5,
+    "precision": 0.5396825396825397,
+    "recall": 0.018197388139584672,
+    "f1": 0.03520762141451796,
+    "confusion_matrix_tn_fp_fn_tp": [
+      [
+        66735,
+        145
+      ],
+      [
+        9172,
+        170
+      ]
+    ],
+    "probability_summary": {
+      "min": 3.357619271245442e-05,
+      "p01": 9.728644034632257e-05,
+      "p25": 0.00034045033295937026,
+      "median": 0.034826180463746526,
+      "mean": 0.1222002161889494,
+      "p75": 0.25440814890315666,
+      "p99": 0.4629169937490089,
+      "max": 0.776543455432776,
+      "p05": 0.00019147028839113599,
+      "p95": 0.386972235908263
+    },
+    "ranking": {
+      "top_5_pct": {
+        "selected_count": 3812,
+        "responders_captured": 1590,
+        "responder_capture_rate": 0.170199100834939,
+        "response_rate": 0.41710388247639035,
+        "lift": 3.4031783483317732
+      },
+      "top_10_pct": {
+        "selected_count": 7623,
+        "responders_captured": 3013,
+        "responder_capture_rate": 0.32252194390922717,
+        "response_rate": 0.3952512134330316,
+        "lift": 3.2248809666337546
+      },
+      "top_20_pct": {
+        "selected_count": 15245,
+        "responders_captured": 5441,
+        "responder_capture_rate": 0.5824234639263541,
+        "response_rate": 0.3569039029189898,
+        "lift": 2.912002706946183
+      }
+    },
+    "log_loss": 0.2639992236972073,
+    "brier_score": 0.08639101705449588,
+    "threshold_note": "Threshold 0.5 diagnostic only",
+    "fit_and_score_seconds": 201.86784639999678,
+    "warnings": [],
+    "training_count": 304887,
+    "training_index_sha256": "f6195f3d12b926793ecb33207c9795fb7547d1d2ace4f1b796dec4cd0fddacc0",
+    "validation_index_sha256": "d41cffcebdc47873501b2e7e1a69ccc6d73c7d083af2a857cb1af33a6536ab7a",
+    "preprocessing_fit_rows": 304887,
+    "preprocessing_fit_index_sha256": "f6195f3d12b926793ecb33207c9795fb7547d1d2ace4f1b796dec4cd0fddacc0"
+  },
+  "lightgbm": {
+    "validation_count": 76222,
+    "responders": 9342,
+    "overall_response_rate": 0.12256303954238934,
+    "roc_auc": 0.8577757230171097,
+    "average_precision": 0.3673822200005873,
+    "reporting_threshold": 0.5,
+    "precision": 0.4782608695652174,
+    "recall": 0.010597302504816955,
+    "f1": 0.020735155513666354,
+    "confusion_matrix_tn_fp_fn_tp": [
+      [
+        66772,
+        108
+      ],
+      [
+        9243,
+        99
+      ]
+    ],
+    "probability_summary": {
+      "min": 9.156356106827592e-05,
+      "p01": 0.00019176962055191264,
+      "p25": 0.00039384924000676337,
+      "median": 0.03277327303455389,
+      "mean": 0.12227621510267633,
+      "p75": 0.2554275332506164,
+      "p99": 0.46020105708437026,
+      "max": 0.6556082443515212,
+      "p05": 0.0002525438590964641,
+      "p95": 0.38747751992316665
+    },
+    "ranking": {
+      "top_5_pct": {
+        "selected_count": 3812,
+        "responders_captured": 1588,
+        "responder_capture_rate": 0.16998501391564974,
+        "response_rate": 0.41657922350472193,
+        "lift": 3.3988976208495947
+      },
+      "top_10_pct": {
+        "selected_count": 7623,
+        "responders_captured": 3021,
+        "responder_capture_rate": 0.3233782915863841,
+        "response_rate": 0.39630066902794175,
+        "lift": 3.233443544706463
+      },
+      "top_20_pct": {
+        "selected_count": 15245,
+        "responders_captured": 5422,
+        "responder_capture_rate": 0.5803896381931064,
+        "response_rate": 0.35565759265332897,
+        "lift": 2.9018339785080327
+      }
+    },
+    "log_loss": 0.2645655447244613,
+    "brier_score": 0.08658562404854298,
+    "threshold_note": "Threshold 0.5 diagnostic only",
+    "fit_and_score_seconds": 12.44585069999448,
+    "warnings": [],
+    "training_count": 304887,
+    "training_index_sha256": "f6195f3d12b926793ecb33207c9795fb7547d1d2ace4f1b796dec4cd0fddacc0",
+    "validation_index_sha256": "d41cffcebdc47873501b2e7e1a69ccc6d73c7d083af2a857cb1af33a6536ab7a",
+    "preprocessing_fit_rows": 304887,
+    "preprocessing_fit_index_sha256": "f6195f3d12b926793ecb33207c9795fb7547d1d2ace4f1b796dec4cd0fddacc0",
+    "training_category_cardinalities": "[2, 2, 53, 2, 3, 2, 154]"
+  },
+  "xgboost": {
+    "validation_count": 76222,
+    "responders": 9342,
+    "overall_response_rate": 0.12256303954238934,
+    "roc_auc": 0.8579062822666889,
+    "average_precision": 0.3678924514564305,
+    "reporting_threshold": 0.5,
+    "precision": 0.4642857142857143,
+    "recall": 0.012524084778420038,
+    "f1": 0.024390243902439025,
+    "confusion_matrix_tn_fp_fn_tp": [
+      [
+        66745,
+        135
+      ],
+      [
+        9225,
+        117
+      ]
+    ],
+    "probability_summary": {
+      "min": 0.00010166211723117158,
+      "p01": 0.00019474689906928688,
+      "p25": 0.0004086446715518832,
+      "median": 0.032099947333335876,
+      "mean": 0.1222999319434166,
+      "p75": 0.25544658303260803,
+      "p99": 0.4621149003505707,
+      "max": 0.649220883846283,
+      "p05": 0.0002563904272392392,
+      "p95": 0.38779476284980774
+    },
+    "ranking": {
+      "top_5_pct": {
+        "selected_count": 3812,
+        "responders_captured": 1579,
+        "responder_capture_rate": 0.16902162277884822,
+        "response_rate": 0.4142182581322141,
+        "lift": 3.3796343471797923
+      },
+      "top_10_pct": {
+        "selected_count": 7623,
+        "responders_captured": 2990,
+        "responder_capture_rate": 0.320059944337401,
+        "response_rate": 0.392234028597665,
+        "lift": 3.2002635546747182
+      },
+      "top_20_pct": {
+        "selected_count": 15245,
+        "responders_captured": 5465,
+        "responder_capture_rate": 0.5849925069578249,
+        "response_rate": 0.35847818957035094,
+        "lift": 2.924847416552268
+      }
+    },
+    "log_loss": 0.2646181881427765,
+    "brier_score": 0.08656018227338791,
+    "threshold_note": "Threshold 0.5 diagnostic only",
+    "fit_and_score_seconds": 27.626921700008097,
+    "warnings": [],
+    "training_count": 304887,
+    "training_index_sha256": "f6195f3d12b926793ecb33207c9795fb7547d1d2ace4f1b796dec4cd0fddacc0",
+    "validation_index_sha256": "d41cffcebdc47873501b2e7e1a69ccc6d73c7d083af2a857cb1af33a6536ab7a",
+    "preprocessing_fit_rows": 304887,
+    "preprocessing_fit_index_sha256": "f6195f3d12b926793ecb33207c9795fb7547d1d2ace4f1b796dec4cd0fddacc0",
+    "training_category_cardinalities": "[2, 2, 53, 2, 3, 2, 154]"
+  },
+  "ensemble_equal_boost": {
+    "validation_count": 76222,
+    "responders": 9342,
+    "overall_response_rate": 0.12256303954238934,
+    "roc_auc": 0.8587158832583517,
+    "average_precision": 0.3706837001249341,
+    "reporting_threshold": 0.5,
+    "precision": 0.5268817204301075,
+    "recall": 0.01049025904517234,
+    "f1": 0.020570948782535684,
+    "confusion_matrix_tn_fp_fn_tp": [
+      [
+        66792,
+        88
+      ],
+      [
+        9244,
+        98
+      ]
+    ],
+    "probability_summary": {
+      "min": 9.080638065809014e-05,
+      "p01": 0.00019722057836366814,
+      "p25": 0.00037754487630616994,
+      "median": 0.03301934994838593,
+      "mean": 0.12225878691567925,
+      "p75": 0.2549647473137196,
+      "p99": 0.4604982993836274,
+      "max": 0.6637644841885003,
+      "p05": 0.0002482437895935623,
+      "p95": 0.38671570935592625
+    },
+    "ranking": {
+      "top_5_pct": {
+        "selected_count": 3812,
+        "responders_captured": 1592,
+        "responder_capture_rate": 0.17041318775422823,
+        "response_rate": 0.4176285414480588,
+        "lift": 3.4074590758139514
+      },
+      "top_10_pct": {
+        "selected_count": 7623,
+        "responders_captured": 3027,
+        "responder_capture_rate": 0.32402055234425176,
+        "response_rate": 0.3970877607241244,
+        "lift": 3.2398654782609944
+      },
+      "top_20_pct": {
+        "selected_count": 15245,
+        "responders_captured": 5431,
+        "responder_capture_rate": 0.581353029329908,
+        "response_rate": 0.35624795014758937,
+        "lift": 2.9066507446103143
+      }
+    },
+    "log_loss": 0.26401707705254307,
+    "brier_score": 0.08639643525964236,
+    "threshold_note": "Threshold 0.5 diagnostic only",
+    "training_count": 304887,
+    "training_index_sha256": "f6195f3d12b926793ecb33207c9795fb7547d1d2ace4f1b796dec4cd0fddacc0",
+    "validation_index_sha256": "d41cffcebdc47873501b2e7e1a69ccc6d73c7d083af2a857cb1af33a6536ab7a",
+    "member_fit_and_score_seconds": 241.94061879999936,
+    "blend_and_score_seconds": 0.17916680000780616,
+    "warnings": []
+  },
+  "ensemble_cat_light_50_50": {
+    "validation_count": 76222,
+    "responders": 9342,
+    "overall_response_rate": 0.12256303954238934,
+    "roc_auc": 0.8588577214442366,
+    "average_precision": 0.37121224563178024,
+    "reporting_threshold": 0.5,
+    "precision": 0.5343915343915344,
+    "recall": 0.010811389424106187,
+    "f1": 0.021193998531109013,
+    "confusion_matrix_tn_fp_fn_tp": [
+      [
+        66792,
+        88
+      ],
+      [
+        9241,
+        101
+      ]
+    ],
+    "probability_summary": {
+      "min": 6.371290392755431e-05,
+      "p01": 0.00017632284226535097,
+      "p25": 0.0003648651676669825,
+      "median": 0.03345315967933611,
+      "mean": 0.12223821564581287,
+      "p75": 0.2545313460288194,
+      "p99": 0.45914304788877314,
+      "max": 0.7017618230902304,
+      "p05": 0.00023534468003207673,
+      "p95": 0.3862604678358341
+    },
+    "ranking": {
+      "top_5_pct": {
+        "selected_count": 3812,
+        "responders_captured": 1583,
+        "responder_capture_rate": 0.16944979661742668,
+        "response_rate": 0.41526757607555087,
+        "lift": 3.388195802144149
+      },
+      "top_10_pct": {
+        "selected_count": 7623,
+        "responders_captured": 3031,
+        "responder_capture_rate": 0.3244487261828302,
+        "response_rate": 0.39761248852157943,
+        "lift": 3.244146767297348
+      },
+      "top_20_pct": {
+        "selected_count": 15245,
+        "responders_captured": 5441,
+        "responder_capture_rate": 0.5824234639263541,
+        "response_rate": 0.3569039029189898,
+        "lift": 2.912002706946183
+      }
+    },
+    "log_loss": 0.2638941190853409,
+    "brier_score": 0.08636800244600126,
+    "threshold_note": "Threshold 0.5 diagnostic only",
+    "training_count": 304887,
+    "training_index_sha256": "f6195f3d12b926793ecb33207c9795fb7547d1d2ace4f1b796dec4cd0fddacc0",
+    "validation_index_sha256": "d41cffcebdc47873501b2e7e1a69ccc6d73c7d083af2a857cb1af33a6536ab7a",
+    "member_fit_and_score_seconds": 214.31369709999126,
+    "blend_and_score_seconds": 0.17791099999158178,
+    "warnings": []
+  }
+}
