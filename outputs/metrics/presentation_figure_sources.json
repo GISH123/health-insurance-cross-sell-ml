@@ -1,0 +1,408 @@
+{
+  "command": ".\\.venv\\Scripts\\python.exe -B -m src.presentation_eda",
+  "train_rows": 381109,
+  "train_sha256": "3b60d1072851756367817fb155e6e755ffa79509daa806720719bc395dfbea7d",
+  "training_response_rate": 0.12256336113815208,
+  "figures": {
+    "eda_target_distribution.png": {
+      "source": "data/raw/train.csv",
+      "target_distribution": [
+        {
+          "response": 0,
+          "count": 334399,
+          "percentage": 87.74366388618479
+        },
+        {
+          "response": 1,
+          "count": 46710,
+          "percentage": 12.256336113815209
+        }
+      ],
+      "all_negative_accuracy": 0.877436638861848,
+      "message": "Evaluate ranking and responder capture, not accuracy alone."
+    },
+    "eda_key_segments.png": {
+      "source": "data/raw/train.csv",
+      "segments": {
+        "Previously_Insured": [
+          {
+            "value": 0,
+            "rows": 206481,
+            "responders": 46552,
+            "response_rate": 0.22545415800969582
+          },
+          {
+            "value": 1,
+            "rows": 174628,
+            "responders": 158,
+            "response_rate": 0.0009047804475799987
+          }
+        ],
+        "Vehicle_Damage": [
+          {
+            "value": "No",
+            "rows": 188696,
+            "responders": 982,
+            "response_rate": 0.005204137872556917
+          },
+          {
+            "value": "Yes",
+            "rows": 192413,
+            "responders": 45728,
+            "response_rate": 0.23765545987017508
+          }
+        ],
+        "Vehicle_Age": [
+          {
+            "value": "< 1 Year",
+            "rows": 164786,
+            "responders": 7202,
+            "response_rate": 0.043705169128445374
+          },
+          {
+            "value": "1-2 Year",
+            "rows": 200316,
+            "responders": 34806,
+            "response_rate": 0.17375546636314623
+          },
+          {
+            "value": "> 2 Years",
+            "rows": 16007,
+            "responders": 4702,
+            "response_rate": 0.2937464859124133
+          }
+        ]
+      },
+      "message": "Strong associations warrant scoring-time availability checks, not automatic leakage claims."
+    },
+    "eda_age_response.png": {
+      "source": "data/raw/train.csv",
+      "bins": [
+        {
+          "value": "20\u201329",
+          "rows": 155203,
+          "responders": 6374,
+          "response_rate": 0.04106879377331624
+        },
+        {
+          "value": "30\u201339",
+          "rows": 54253,
+          "responders": 10856,
+          "response_rate": 0.20009953366634103
+        },
+        {
+          "value": "40\u201349",
+          "rows": 76846,
+          "responders": 16319,
+          "response_rate": 0.21235978450407308
+        },
+        {
+          "value": "50\u201359",
+          "rows": 48034,
+          "responders": 8497,
+          "response_rate": 0.17689553233126534
+        },
+        {
+          "value": "60\u201369",
+          "rows": 29023,
+          "responders": 3325,
+          "response_rate": 0.11456431106363918
+        },
+        {
+          "value": "70\u201385",
+          "rows": 17750,
+          "responders": 1339,
+          "response_rate": 0.07543661971830985
+        }
+      ],
+      "message": "A nonlinear challenger is a defensible hypothesis; this is not proof of mechanism."
+    },
+    "eda_policy_channel_long_tail.png": {
+      "source": "data/raw/train.csv; already-known inference audit",
+      "summary": {
+        "train_categories": 155,
+        "test_categories": 145,
+        "test_only_unseen_codes": [
+          141.0,
+          142.0
+        ],
+        "test_metadata_source": "Already-known audit metadata explicitly supplied in this task; test.csv not loaded.",
+        "top_three_codes": [
+          {
+            "code": 152.0,
+            "rows": 134784
+          },
+          {
+            "code": 26.0,
+            "rows": 79700
+          },
+          {
+            "code": 124.0,
+            "rows": 73995
+          }
+        ],
+        "top_three_row_share": 0.7569461755035961,
+        "rare_definition": "Fewer than 100 training rows",
+        "rare_categories": 92,
+        "rare_rows": 1949,
+        "rare_row_share": 0.005114022497500715,
+        "interpretation": "Sparse unseen-code cases are an inference-robustness edge case, not evidence of major distribution shift.",
+        "mitigation": {
+          "logistic": "OneHotEncoder(handle_unknown=\"ignore\")",
+          "catboost": "Consistent categorical string representation; unseen categories supported",
+          "lightgbm_xgboost": "Training-local one-hot encoding, handle_unknown=ignore",
+          "production": "Monitor unseen-category rate and input schema"
+        }
+      },
+      "message": "Concentration and rare codes call for robust category handling, not numeric code-distance assumptions."
+    },
+    "eda_annual_premium.png": {
+      "source": "data/raw/train.csv",
+      "groups": [
+        {
+          "value": "2630",
+          "rows": 64877,
+          "responders": 8505,
+          "response_rate": 0.1310942244555081
+        },
+        {
+          "value": "Other values",
+          "rows": 316232,
+          "responders": 38205,
+          "response_rate": 0.12081320043512359
+        }
+      ],
+      "mass_point_share": 0.17023213831213643,
+      "histogram_counts": [
+        64877,
+        5,
+        384,
+        5418,
+        30270,
+        65111,
+        70247,
+        54800,
+        35553,
+        22235,
+        12815,
+        7234,
+        4262,
+        3009,
+        1599,
+        925,
+        2365
+      ],
+      "histogram_edges": [
+        0,
+        5000,
+        10000,
+        15000,
+        20000,
+        25000,
+        30000,
+        35000,
+        40000,
+        45000,
+        50000,
+        55000,
+        60000,
+        65000,
+        70000,
+        75000,
+        80000,
+        "infinity"
+      ],
+      "overflow_count_ge_80000": 2365,
+      "maximum_retained": 540165.0,
+      "message": "Retain an unexplained mass point; displaying the tail separately is not deleting it."
+    },
+    "model_family_cv_comparison.png": {
+      "source": "outputs/metrics/model_family_cv_summary.csv",
+      "values": [
+        {
+          "model": "catboost",
+          "metric": "roc_auc",
+          "completed_folds": 5,
+          "mean": 0.8589346948803284,
+          "std": 0.0012629083082758015
+        },
+        {
+          "model": "catboost",
+          "metric": "average_precision",
+          "completed_folds": 5,
+          "mean": 0.3741605189628635,
+          "std": 0.0029794446262904556
+        },
+        {
+          "model": "lightgbm",
+          "metric": "roc_auc",
+          "completed_folds": 5,
+          "mean": 0.8578548548415602,
+          "std": 0.0012106320156910844
+        },
+        {
+          "model": "lightgbm",
+          "metric": "average_precision",
+          "completed_folds": 5,
+          "mean": 0.36970433119862456,
+          "std": 0.002854304740946431
+        },
+        {
+          "model": "logistic",
+          "metric": "roc_auc",
+          "completed_folds": 5,
+          "mean": 0.849335470898707,
+          "std": 0.001526987137107323
+        },
+        {
+          "model": "logistic",
+          "metric": "average_precision",
+          "completed_folds": 5,
+          "mean": 0.3365964672270951,
+          "std": 0.0043933602247457435
+        },
+        {
+          "model": "xgboost",
+          "metric": "roc_auc",
+          "completed_folds": 5,
+          "mean": 0.8577688744077333,
+          "std": 0.001273211943602065
+        },
+        {
+          "model": "xgboost",
+          "metric": "average_precision",
+          "completed_folds": 5,
+          "mean": 0.3695788699226986,
+          "std": 0.0035207358434278554
+        }
+      ],
+      "message": "CatBoost is the strongest single model in this fixed comparison, with small gaps among boosting families."
+    },
+    "catboost_topk_targeting.png": {
+      "source": "validated CatBoost holdout metrics and saved scores",
+      "validation_rows": 76222,
+      "responders": 9342,
+      "overall_response_rate": 0.12256303954238934,
+      "roc_auc": 0.8586921610000215,
+      "average_precision": 0.3709761097553016,
+      "ranking": {
+        "top_5_pct": {
+          "selected_count": 3812,
+          "responders_captured": 1590,
+          "responder_capture_rate": 0.170199100834939,
+          "response_rate": 0.41710388247639035,
+          "lift": 3.4031783483317732
+        },
+        "top_10_pct": {
+          "selected_count": 7623,
+          "responders_captured": 3013,
+          "responder_capture_rate": 0.32252194390922717,
+          "response_rate": 0.3952512134330316,
+          "lift": 3.2248809666337546
+        },
+        "top_20_pct": {
+          "selected_count": 15245,
+          "responders_captured": 5441,
+          "responder_capture_rate": 0.5824234639263541,
+          "response_rate": 0.3569039029189898,
+          "lift": 2.912002706946183
+        }
+      },
+      "validation_index_sha256": "d41cffcebdc47873501b2e7e1a69ccc6d73c7d083af2a857cb1af33a6536ab7a",
+      "message": "Capacity-based prioritization concentrates responders without assuming monetary benefit."
+    },
+    "catboost_cumulative_gains.png": {
+      "source": "saved CatBoost holdout scores; Response from original aligned train rows",
+      "validation_rows": 76222,
+      "responders": 9342,
+      "overall_response_rate": 0.12256303954238934,
+      "roc_auc": 0.8586921610000215,
+      "average_precision": 0.3709761097553016,
+      "ranking": {
+        "top_5_pct": {
+          "selected_count": 3812,
+          "responders_captured": 1590,
+          "responder_capture_rate": 0.170199100834939,
+          "response_rate": 0.41710388247639035,
+          "lift": 3.4031783483317732
+        },
+        "top_10_pct": {
+          "selected_count": 7623,
+          "responders_captured": 3013,
+          "responder_capture_rate": 0.32252194390922717,
+          "response_rate": 0.3952512134330316,
+          "lift": 3.2248809666337546
+        },
+        "top_20_pct": {
+          "selected_count": 15245,
+          "responders_captured": 5441,
+          "responder_capture_rate": 0.5824234639263541,
+          "response_rate": 0.3569039029189898,
+          "lift": 2.912002706946183
+        }
+      },
+      "validation_index_sha256": "d41cffcebdc47873501b2e7e1a69ccc6d73c7d083af2a857cb1af33a6536ab7a",
+      "curve_points_source": "outputs/metrics/presentation_gains_points.csv",
+      "random_reference": "Expected capture fraction equals the selected row fraction",
+      "message": "The gains curve shows how capture changes as campaign capacity expands."
+    },
+    "catboost_feature_importance.png": {
+      "source": "outputs/metrics/catboost_feature_importance.csv",
+      "top_five": [
+        {
+          "rank": 1,
+          "feature": "Previously_Insured",
+          "importance": 56.42813942785731
+        },
+        {
+          "rank": 2,
+          "feature": "Vehicle_Damage",
+          "importance": 14.685285364569962
+        },
+        {
+          "rank": 3,
+          "feature": "Age",
+          "importance": 11.216746768834122
+        },
+        {
+          "rank": 4,
+          "feature": "Policy_Sales_Channel",
+          "importance": 6.837268956697673
+        },
+        {
+          "rank": 5,
+          "feature": "Vehicle_Age",
+          "importance": 3.3732365228577748
+        }
+      ],
+      "message": "Native importance guides explanation, with availability flags and no causal claim."
+    }
+  },
+  "checks": {
+    "all_nine_figures_exist": true,
+    "train_bytes_unchanged": true,
+    "validated_artifacts_unchanged": true,
+    "target_count_matches": true,
+    "premium_histogram_retains_every_row": true,
+    "first_histogram_bin_is_mass_point_only": true,
+    "holdout_metrics_and_topk_reproduced": true,
+    "age_bins_cover_every_row": true,
+    "segment_groups_cover_every_row": true,
+    "policy_channel_cardinality_matches": true,
+    "catboost_highest_cv_means": true
+  },
+  "recommended_main": [
+    "eda_target_distribution.png",
+    "eda_key_segments.png",
+    "model_family_cv_comparison.png",
+    "catboost_topk_targeting.png",
+    "catboost_cumulative_gains.png"
+  ],
+  "recommended_appendix": [
+    "eda_age_response.png",
+    "eda_policy_channel_long_tail.png",
+    "eda_annual_premium.png",
+    "catboost_feature_importance.png",
+    "calibration.png"
+  ]
+}

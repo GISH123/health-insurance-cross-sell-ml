@@ -1,0 +1,35 @@
+{
+  "train_categories": 155,
+  "test_categories": 145,
+  "test_only_unseen_codes": [
+    141.0,
+    142.0
+  ],
+  "test_metadata_source": "Already-known audit metadata explicitly supplied in this task; test.csv not loaded.",
+  "top_three_codes": [
+    {
+      "code": 152.0,
+      "rows": 134784
+    },
+    {
+      "code": 26.0,
+      "rows": 79700
+    },
+    {
+      "code": 124.0,
+      "rows": 73995
+    }
+  ],
+  "top_three_row_share": 0.7569461755035961,
+  "rare_definition": "Fewer than 100 training rows",
+  "rare_categories": 92,
+  "rare_rows": 1949,
+  "rare_row_share": 0.005114022497500715,
+  "interpretation": "Sparse unseen-code cases are an inference-robustness edge case, not evidence of major distribution shift.",
+  "mitigation": {
+    "logistic": "OneHotEncoder(handle_unknown=\"ignore\")",
+    "catboost": "Consistent categorical string representation; unseen categories supported",
+    "lightgbm_xgboost": "Training-local one-hot encoding, handle_unknown=ignore",
+    "production": "Monitor unseen-category rate and input schema"
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "source_checks": {
+    "all_nine_figures_exist": true,
+    "train_bytes_unchanged": true,
+    "validated_artifacts_unchanged": true,
+    "target_count_matches": true,
+    "premium_histogram_retains_every_row": true,
+    "first_histogram_bin_is_mass_point_only": true,
+    "holdout_metrics_and_topk_reproduced": true,
+    "age_bins_cover_every_row": true,
+    "segment_groups_cover_every_row": true,
+    "policy_channel_cardinality_matches": true,
+    "catboost_highest_cv_means": true
+  },
+  "image_checks": {
+    "eda_target_distribution.png": {
+      "width": 2400,
+      "height": 1350,
+      "readable": true,
+      "exists": true
+    },
+    "eda_key_segments.png": {
+      "width": 2400,
+      "height": 1350,
+      "readable": true,
+      "exists": true
+    },
+    "eda_age_response.png": {
+      "width": 2400,
+      "height": 1350,
+      "readable": true,
+      "exists": true
+    },
+    "eda_policy_channel_long_tail.png": {
+      "width": 2400,
+      "height": 1350,
+      "readable": true,
+      "exists": true
+    },
+    "eda_annual_premium.png": {
+      "width": 2400,
+      "height": 1350,
+      "readable": true,
+      "exists": true
+    },
+    "model_family_cv_comparison.png": {
+      "width": 2400,
+      "height": 1350,
+      "readable": true,
+      "exists": true
+    },
+    "catboost_topk_targeting.png": {
+      "width": 2400,
+      "height": 1350,
+      "readable": true,
+      "exists": true
+    },
+    "catboost_cumulative_gains.png": {
+      "width": 2400,
+      "height": 1350,
+      "readable": true,
+      "exists": true
+    },
+    "catboost_feature_importance.png": {
+      "width": 2400,
+      "height": 1350,
+      "readable": true,
+      "exists": true
+    }
+  },
+  "visual_review": "All nine images inspected; corrected lift tick labels and gains annotation placement.",
+  "matplotlib_cache_directory": "C:\\Users\\User\\orca\\workspaces\\health-insurance-cross-sell-ml\\loggerhead\\outputs\\figures\\matplotlib_config",
+  "verification_note": "An initial verification-only pyplot import used the default font cache and was denied write permission. Import order was corrected to use the repository-local cache; figures were unaffected.",
+  "cache_within_repository": true,
+  "tests": {
+    "command": [
+      "C:\\Users\\User\\orca\\workspaces\\health-insurance-cross-sell-ml\\loggerhead\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_preprocessing_is_fitted_on_training_only (test_baseline.BaselineTests.test_preprocessing_is_fitted_on_training_only) ... ok\ntest_split_excludes_id_and_target_from_predictors (test_baseline.BaselineTests.test_split_excludes_id_and_target_from_predictors) ... ok\ntest_split_is_reproducible_and_stratified (test_baseline.BaselineTests.test_split_is_reproducible_and_stratified) ... ok\ntest_top_k_metrics_uses_ceil_and_correct_denominators (test_baseline.BaselineTests.test_top_k_metrics_uses_ceil_and_correct_denominators) ... ok\ntest_unseen_sales_channel_does_not_crash (test_baseline.BaselineTests.test_unseen_sales_channel_does_not_crash) ... ok\ntest_small_fixture_trains_scores_and_excludes_id (test_catboost.CatBoostTests.test_small_fixture_trains_scores_and_excludes_id) ... ok\ntest_unseen_categories_and_numeric_code_representations (test_catboost.CatBoostTests.test_unseen_categories_and_numeric_code_representations) ... ok\ntest_validation_is_not_supplied_to_fit (test_catboost.CatBoostTests.test_validation_is_not_supplied_to_fit) ... ok\ntest_blend_rejects_invalid_probabilities (test_family_benchmark.FamilyBenchmarkTests.test_blend_rejects_invalid_probabilities) ... ok\ntest_blend_rejects_misaligned_arrays (test_family_benchmark.FamilyBenchmarkTests.test_blend_rejects_misaligned_arrays) ... ok\ntest_ensemble_members_are_predefined (test_family_benchmark.FamilyBenchmarkTests.test_ensemble_members_are_predefined) ... ok\ntest_entrypoint_uses_only_validated_training_loader (test_family_benchmark.FamilyBenchmarkTests.test_entrypoint_uses_only_validated_training_loader) ... ok\ntest_nonfinite_parameter_sentinel_has_valid_json_representation (test_family_benchmark.FamilyBenchmarkTests.test_nonfinite_parameter_sentinel_has_valid_json_representation) ... ok\ntest_probability_blend_arithmetic_and_indices (test_family_benchmark.FamilyBenchmarkTests.test_probability_blend_arithmetic_and_indices) ... ok\ntest_runtime_summary_uses_sample_standard_deviation (test_family_benchmark.FamilyBenchmarkTests.test_runtime_summary_uses_sample_standard_deviation) ... ok\ntest_same_holdout_folds_and_fold_local_fit_rows (test_family_benchmark.FamilyBenchmarkTests.test_same_holdout_folds_and_fold_local_fit_rows) ... ok\ntest_ap_is_named_correctly_and_probability_quantiles_present (test_model_comparison.ComparisonTests.test_ap_is_named_correctly_and_probability_quantiles_present) ... ok\ntest_calibration_omits_empty_bins_and_counts_all_rows (test_model_comparison.ComparisonTests.test_calibration_omits_empty_bins_and_counts_all_rows) ... ok\ntest_calibration_singleton_does_not_imply_zero_uncertainty (test_model_comparison.ComparisonTests.test_calibration_singleton_does_not_imply_zero_uncertainty) ... ok\ntest_cv_fit_calls_use_fold_training_rows_only (test_model_comparison.ComparisonTests.test_cv_fit_calls_use_fold_training_rows_only) ... ok\ntest_folds_are_stratified_and_cover_each_row_once (test_model_comparison.ComparisonTests.test_folds_are_stratified_and_cover_each_row_once) ... ok\ntest_logistic_handles_both_known_test_only_channel_codes (test_model_comparison.ComparisonTests.test_logistic_handles_both_known_test_only_channel_codes) ... ok\ntest_models_use_identical_holdout_indices (test_model_comparison.ComparisonTests.test_models_use_identical_holdout_indices) ... ok\ntest_real_cv_preprocessing_is_fold_local (test_model_comparison.ComparisonTests.test_real_cv_preprocessing_is_fold_local) ... ok\ntest_curve_counts_denominators_and_endpoints (test_presentation_eda.GainsTests.test_curve_counts_denominators_and_endpoints) ... ok\ntest_score_ties_follow_input_order (test_presentation_eda.GainsTests.test_score_ties_follow_input_order) ... ok\ntest_undefined_or_invalid_curve_inputs_are_rejected (test_presentation_eda.GainsTests.test_undefined_or_invalid_curve_inputs_are_rejected) ... ok\ntest_category_vocabulary_is_training_local (test_tree_challengers.TreeEncodingTests.test_category_vocabulary_is_training_local) ... ok\ntest_id_excluded_and_premium_preserved (test_tree_challengers.TreeEncodingTests.test_id_excluded_and_premium_preserved) ... ok\ntest_unseen_codes_use_consistent_zero_encoding (test_tree_challengers.TreeEncodingTests.test_unseen_codes_use_consistent_zero_encoding) ... ok\ntest_lightgbm_trains_and_scores_unseen_codes (test_tree_challengers.TreeModelTests.test_lightgbm_trains_and_scores_unseen_codes) ... ok\ntest_xgboost_trains_and_scores_unseen_codes (test_tree_challengers.TreeModelTests.test_xgboost_trains_and_scores_unseen_codes) ... ok\n\n----------------------------------------------------------------------\nRan 32 tests in 3.639s\n\nOK\n"
+  },
+  "git_diff_check": {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "head": {
+    "command": [
+      "git",
+      "rev-parse",
+      "--short",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stdout": "c881600\n",
+    "stderr": ""
+  },
+  "source_whitespace_clean": true,
+  "status": "PASS",
+  "git_status": {
+    "command": [
+      "git",
+      "status",
+      "--short",
+      "--untracked-files=all"
+    ],
+    "returncode": 0,
+    "stdout": "?? outputs/figures/catboost_cumulative_gains.png\n?? outputs/figures/catboost_feature_importance.png\n?? outputs/figures/catboost_topk_targeting.png\n?? outputs/figures/eda_age_response.png\n?? outputs/figures/eda_annual_premium.png\n?? outputs/figures/eda_key_segments.png\n?? outputs/figures/eda_policy_channel_long_tail.png\n?? outputs/figures/eda_target_distribution.png\n?? outputs/figures/model_family_cv_comparison.png\n?? outputs/metrics/policy_channel_summary.json\n?? outputs/metrics/presentation_eda_verification.json\n?? outputs/metrics/presentation_figure_sources.json\n?? outputs/metrics/presentation_gains_points.csv\n?? src/presentation_eda.py\n?? tests/test_presentation_eda.py\n",
+    "stderr": ""
+  }
+}
