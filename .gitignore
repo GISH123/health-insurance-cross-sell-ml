@@ -7,3 +7,6 @@ __pycache__/
 *.pyo
 *.pyd
 .pytest_cache/
+outputs/logs/
+outputs/metrics/holdout_indices.csv
+outputs/figures/matplotlib_config/

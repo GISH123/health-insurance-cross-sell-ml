@@ -1,0 +1,1174 @@
+{
+  "status": "COMPLETE",
+  "baseline_integrity": {
+    "status": "PASS",
+    "checks": {
+      "baseline_data_module_exists": true,
+      "split_sizes": true,
+      "validation_responders": true,
+      "id_excluded": true,
+      "target_excluded": true,
+      "roc_auc_reproduced": true,
+      "ap_reproduced": true,
+      "topk_independent": true,
+      "no_convergence_warnings": true
+    },
+    "python": "3.14.0 (tags/v3.14.0:ebf955d, Oct  7 2025, 10:15:03) [MSC v.1944 64 bit (AMD64)]",
+    "versions": {
+      "pandas": "3.0.6",
+      "numpy": "2.5.3",
+      "sklearn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "catboost": "1.2.10"
+    },
+    "warnings": [],
+    "baseline_metrics": {
+      "validation_count": 76222,
+      "responders": 9342,
+      "overall_response_rate": 0.12256303954238934,
+      "roc_auc": 0.8500033851213687,
+      "average_precision": 0.33832130516334624,
+      "reporting_threshold": 0.5,
+      "precision": 0.35185185185185186,
+      "recall": 0.0020338257332476986,
+      "f1": 0.004044274159216688,
+      "confusion_matrix_tn_fp_fn_tp": [
+        [
+          66845,
+          35
+        ],
+        [
+          9323,
+          19
+        ]
+      ],
+      "probability_summary": {
+        "min": 4.762773935230991e-05,
+        "p01": 0.00016091785492582269,
+        "p25": 0.0005481740588136558,
+        "median": 0.04193672597897275,
+        "mean": 0.12224066847650637,
+        "p75": 0.25654541031089795,
+        "p99": 0.4260154154445,
+        "max": 0.6035909642870789
+      },
+      "ranking": {
+        "top_5_pct": {
+          "selected_count": 3812,
+          "responders_captured": 1408,
+          "responder_capture_rate": 0.15071719117961893,
+          "response_rate": 0.36935991605456453,
+          "lift": 3.013632147453545
+        },
+        "top_10_pct": {
+          "selected_count": 7623,
+          "responders_captured": 2765,
+          "responder_capture_rate": 0.29597516591736245,
+          "response_rate": 0.3627180899908173,
+          "lift": 2.959441046379798
+        },
+        "top_20_pct": {
+          "selected_count": 15245,
+          "responders_captured": 5239,
+          "responder_capture_rate": 0.5608006850781417,
+          "response_rate": 0.3436536569367006,
+          "lift": 2.8038930677616345
+        }
+      }
+    },
+    "logistic_parameters": {
+      "C": 1.0,
+      "class_weight": null,
+      "dual": false,
+      "fit_intercept": true,
+      "intercept_scaling": 1,
+      "l1_ratio": 0.0,
+      "max_iter": 1000,
+      "n_jobs": null,
+      "penalty": "deprecated",
+      "random_state": 42,
+      "solver": "lbfgs",
+      "tol": 0.0001,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "raw_sha256": {
+      "data\\raw\\train.csv": "3b60d1072851756367817fb155e6e755ffa79509daa806720719bc395dfbea7d",
+      "data\\raw\\test.csv": "c6a181deaec964fc30de2238a2d7533f3872fb74ad8b2a481ef1bfc3bbfc6ecc"
+    },
+    "notes": [
+      "src/data.py exists, is imported by src/train.py, and is currently untracked with the other baseline files.",
+      "Source inspection verifies one stratified 80/20 split before fit, seed 42; no test.csv reads in modeling.",
+      "Region_Code and Policy_Sales_Channel are included in OneHotEncoder(handle_unknown=ignore).",
+      "Numeric scaling retains 2630; no filtering or recoding.",
+      "Independent top-40% example: 2 selected, 1 responder, capture .5, response .5, lift 1.25."
+    ],
+    "rerun_checks": {
+      "roc_auc_reproduced": true,
+      "ap_reproduced": true,
+      "validation_count": true,
+      "validation_responders": true,
+      "top10_lift": true,
+      "top20_capture": true,
+      "no_convergence_warning": true
+    }
+  },
+  "python": "3.14.0 (tags/v3.14.0:ebf955d, Oct  7 2025, 10:15:03) [MSC v.1944 64 bit (AMD64)]",
+  "configured_catboost_parameters": {
+    "iterations": 600,
+    "learning_rate": 0.05,
+    "depth": 6,
+    "l2_leaf_reg": 5.0,
+    "loss_function": "Logloss",
+    "random_seed": 42,
+    "thread_count": 4,
+    "task_type": "CPU",
+    "allow_writing_files": false,
+    "verbose": false,
+    "use_best_model": false,
+    "cat_features": [
+      "Gender",
+      "Driving_License",
+      "Region_Code",
+      "Previously_Insured",
+      "Vehicle_Age",
+      "Vehicle_Damage",
+      "Policy_Sales_Channel"
+    ]
+  },
+  "initial_existing_tests": "5 baseline tests passed before implementation; git diff --check passed.",
+  "warnings": [],
+  "blockers": [],
+  "incomplete_steps": [],
+  "implementation_notes": [
+    "New comparison tests exposed CatBoost get_params deep-copying list cat_features, which fails sklearn clone identity checks. An immutable tuple resolves this; tested with fresh full pipelines in CV.",
+    "A development docstring escape warning was resolved with a raw docstring; no baseline source was changed.",
+    "Calibration diagnostics were refined while fixed fits continued: Wilson intervals and sparse-bin markers. Outputs were refreshed from existing counts, without refitting/recalibration.",
+    "Final report checks normalize numpy booleans to plain booleans for JSON serialization; computed metrics are unaffected."
+  ],
+  "versions": {
+    "pandas": "3.0.6",
+    "numpy": "2.5.3",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "catboost": "1.2.10"
+  },
+  "raw_shape": [
+    381109,
+    12
+  ],
+  "split": {
+    "test_size": 0.2,
+    "random_state": 42,
+    "stratify": "Response"
+  },
+  "logistic_configuration": {
+    "C": 1.0,
+    "class_weight": null,
+    "dual": false,
+    "fit_intercept": true,
+    "intercept_scaling": 1,
+    "l1_ratio": 0.0,
+    "max_iter": 1000,
+    "n_jobs": null,
+    "penalty": "deprecated",
+    "random_state": 42,
+    "solver": "lbfgs",
+    "tol": 0.0001,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "logistic_training_numeric_means": [
+    38.8268965223181,
+    30591.308310947992,
+    154.39221416459213
+  ],
+  "logistic_holdout": {
+    "validation_count": 76222,
+    "responders": 9342,
+    "overall_response_rate": 0.12256303954238934,
+    "roc_auc": 0.8500033851213687,
+    "average_precision": 0.33832130516334624,
+    "reporting_threshold": 0.5,
+    "precision": 0.35185185185185186,
+    "recall": 0.0020338257332476986,
+    "f1": 0.004044274159216688,
+    "confusion_matrix_tn_fp_fn_tp": [
+      [
+        66845,
+        35
+      ],
+      [
+        9323,
+        19
+      ]
+    ],
+    "probability_summary": {
+      "min": 4.762773935230991e-05,
+      "p01": 0.00016091785492582269,
+      "p25": 0.0005481740588136558,
+      "median": 0.04193672597897275,
+      "mean": 0.12224066847650637,
+      "p75": 0.25654541031089795,
+      "p99": 0.4260154154445,
+      "max": 0.6035909642870789,
+      "p05": 0.00029534184438597826,
+      "p95": 0.3673694443058549
+    },
+    "ranking": {
+      "top_5_pct": {
+        "selected_count": 3812,
+        "responders_captured": 1408,
+        "responder_capture_rate": 0.15071719117961893,
+        "response_rate": 0.36935991605456453,
+        "lift": 3.013632147453545
+      },
+      "top_10_pct": {
+        "selected_count": 7623,
+        "responders_captured": 2765,
+        "responder_capture_rate": 0.29597516591736245,
+        "response_rate": 0.3627180899908173,
+        "lift": 2.959441046379798
+      },
+      "top_20_pct": {
+        "selected_count": 15245,
+        "responders_captured": 5239,
+        "responder_capture_rate": 0.5608006850781417,
+        "response_rate": 0.3436536569367006,
+        "lift": 2.8038930677616345
+      }
+    },
+    "log_loss": 0.26834523630426715,
+    "brier_score": 0.08786735096988833,
+    "threshold_note": "Threshold 0.5 diagnostic only",
+    "fit_and_score_seconds": 1.8649012000023504,
+    "warnings": [],
+    "training_count": 304887,
+    "training_index_sha256": "f6195f3d12b926793ecb33207c9795fb7547d1d2ace4f1b796dec4cd0fddacc0",
+    "validation_index_sha256": "d41cffcebdc47873501b2e7e1a69ccc6d73c7d083af2a857cb1af33a6536ab7a",
+    "calibration": [
+      {
+        "bin_lower": 0.0,
+        "bin_upper": 0.05,
+        "count": 38787,
+        "responders": 147,
+        "mean_predicted_probability": 0.0034661126957180642,
+        "observed_response_rate": 0.003789929615592853,
+        "observed_minus_predicted": 0.00032381691987478896,
+        "observed_rate_wilson_lower_95": 0.00322562886754103,
+        "observed_rate_wilson_upper_95": 0.0044525097760064304
+      },
+      {
+        "bin_lower": 0.05,
+        "bin_upper": 0.1,
+        "count": 3699,
+        "responders": 215,
+        "mean_predicted_probability": 0.07075822563587487,
+        "observed_response_rate": 0.05812381724790484,
+        "observed_minus_predicted": -0.012634408387970038,
+        "observed_rate_wilson_lower_95": 0.05103206943446355,
+        "observed_rate_wilson_upper_95": 0.06613240105271385
+      },
+      {
+        "bin_lower": 0.1,
+        "bin_upper": 0.15,
+        "count": 4698,
+        "responders": 565,
+        "mean_predicted_probability": 0.1256083625668696,
+        "observed_response_rate": 0.12026394210302256,
+        "observed_minus_predicted": -0.005344420463847047,
+        "observed_rate_wilson_lower_95": 0.11127169079775134,
+        "observed_rate_wilson_upper_95": 0.12987669090567638
+      },
+      {
+        "bin_lower": 0.15,
+        "bin_upper": 0.2,
+        "count": 4191,
+        "responders": 740,
+        "mean_predicted_probability": 0.17474134726793855,
+        "observed_response_rate": 0.17656883798616083,
+        "observed_minus_predicted": 0.0018274907182222744,
+        "observed_rate_wilson_lower_95": 0.16532241266128803,
+        "observed_rate_wilson_upper_95": 0.1884076325351877
+      },
+      {
+        "bin_lower": 0.2,
+        "bin_upper": 0.25,
+        "count": 4982,
+        "responders": 1092,
+        "mean_predicted_probability": 0.2261857123459637,
+        "observed_response_rate": 0.21918908069048576,
+        "observed_minus_predicted": -0.006996631655477953,
+        "observed_rate_wilson_lower_95": 0.20792024427287156,
+        "observed_rate_wilson_upper_95": 0.23089063186320732
+      },
+      {
+        "bin_lower": 0.25,
+        "bin_upper": 0.3,
+        "count": 6859,
+        "responders": 1995,
+        "mean_predicted_probability": 0.2758716360760293,
+        "observed_response_rate": 0.29085872576177285,
+        "observed_minus_predicted": 0.014987089685743527,
+        "observed_rate_wilson_lower_95": 0.28023022567470585,
+        "observed_rate_wilson_upper_95": 0.30172135848836373
+      },
+      {
+        "bin_lower": 0.3,
+        "bin_upper": 0.4,
+        "count": 11350,
+        "responders": 3967,
+        "mean_predicted_probability": 0.340515100012357,
+        "observed_response_rate": 0.34951541850220263,
+        "observed_minus_predicted": 0.009000318489845616,
+        "observed_rate_wilson_lower_95": 0.3407956049280754,
+        "observed_rate_wilson_upper_95": 0.3583370619856287
+      },
+      {
+        "bin_lower": 0.4,
+        "bin_upper": 0.5,
+        "count": 1602,
+        "responders": 602,
+        "mean_predicted_probability": 0.4286667891596414,
+        "observed_response_rate": 0.3757802746566791,
+        "observed_minus_predicted": -0.05288651450296228,
+        "observed_rate_wilson_lower_95": 0.3523873431218862,
+        "observed_rate_wilson_upper_95": 0.39976751761244483
+      },
+      {
+        "bin_lower": 0.5,
+        "bin_upper": 0.6,
+        "count": 53,
+        "responders": 19,
+        "mean_predicted_probability": 0.5201778496208274,
+        "observed_response_rate": 0.3584905660377358,
+        "observed_minus_predicted": -0.16168728358309153,
+        "observed_rate_wilson_lower_95": 0.2430195255280876,
+        "observed_rate_wilson_upper_95": 0.49308858444640524
+      },
+      {
+        "bin_lower": 0.6,
+        "bin_upper": 0.8,
+        "count": 1,
+        "responders": 0,
+        "mean_predicted_probability": 0.6035909642870789,
+        "observed_response_rate": 0.0,
+        "observed_minus_predicted": -0.6035909642870789,
+        "observed_rate_wilson_lower_95": 0.0,
+        "observed_rate_wilson_upper_95": 0.7934506856227626
+      }
+    ]
+  },
+  "catboost_holdout": {
+    "validation_count": 76222,
+    "responders": 9342,
+    "overall_response_rate": 0.12256303954238934,
+    "roc_auc": 0.8586921610000215,
+    "average_precision": 0.3709761097553016,
+    "reporting_threshold": 0.5,
+    "precision": 0.5396825396825397,
+    "recall": 0.018197388139584672,
+    "f1": 0.03520762141451796,
+    "confusion_matrix_tn_fp_fn_tp": [
+      [
+        66735,
+        145
+      ],
+      [
+        9172,
+        170
+      ]
+    ],
+    "probability_summary": {
+      "min": 3.357619271245442e-05,
+      "p01": 9.728644034632257e-05,
+      "p25": 0.00034045033295937026,
+      "median": 0.034826180463746526,
+      "mean": 0.1222002161889494,
+      "p75": 0.25440814890315666,
+      "p99": 0.4629169937490089,
+      "max": 0.776543455432776,
+      "p05": 0.00019147028839113599,
+      "p95": 0.386972235908263
+    },
+    "ranking": {
+      "top_5_pct": {
+        "selected_count": 3812,
+        "responders_captured": 1590,
+        "responder_capture_rate": 0.170199100834939,
+        "response_rate": 0.41710388247639035,
+        "lift": 3.4031783483317732
+      },
+      "top_10_pct": {
+        "selected_count": 7623,
+        "responders_captured": 3013,
+        "responder_capture_rate": 0.32252194390922717,
+        "response_rate": 0.3952512134330316,
+        "lift": 3.2248809666337546
+      },
+      "top_20_pct": {
+        "selected_count": 15245,
+        "responders_captured": 5441,
+        "responder_capture_rate": 0.5824234639263541,
+        "response_rate": 0.3569039029189898,
+        "lift": 2.912002706946183
+      }
+    },
+    "log_loss": 0.2639992236972073,
+    "brier_score": 0.08639101705449588,
+    "threshold_note": "Threshold 0.5 diagnostic only",
+    "fit_and_score_seconds": 125.69689779999317,
+    "warnings": [],
+    "training_count": 304887,
+    "training_index_sha256": "f6195f3d12b926793ecb33207c9795fb7547d1d2ace4f1b796dec4cd0fddacc0",
+    "validation_index_sha256": "d41cffcebdc47873501b2e7e1a69ccc6d73c7d083af2a857cb1af33a6536ab7a",
+    "calibration": [
+      {
+        "bin_lower": 0.0,
+        "bin_upper": 0.05,
+        "count": 39833,
+        "responders": 164,
+        "mean_predicted_probability": 0.00427647774572681,
+        "observed_response_rate": 0.004117189265182135,
+        "observed_minus_predicted": -0.00015928848054467485,
+        "observed_rate_wilson_lower_95": 0.003534394985421321,
+        "observed_rate_wilson_upper_95": 0.004795619309605516
+      },
+      {
+        "bin_lower": 0.05,
+        "bin_upper": 0.1,
+        "count": 4164,
+        "responders": 300,
+        "mean_predicted_probability": 0.0768052425622815,
+        "observed_response_rate": 0.07204610951008646,
+        "observed_minus_predicted": -0.004759133052195039,
+        "observed_rate_wilson_lower_95": 0.06458080387242582,
+        "observed_rate_wilson_upper_95": 0.0803002970012032
+      },
+      {
+        "bin_lower": 0.1,
+        "bin_upper": 0.15,
+        "count": 4321,
+        "responders": 536,
+        "mean_predicted_probability": 0.12461897151671479,
+        "observed_response_rate": 0.12404535987040037,
+        "observed_minus_predicted": -0.0005736116463144203,
+        "observed_rate_wilson_lower_95": 0.11454949148666513,
+        "observed_rate_wilson_upper_95": 0.13420909748460702
+      },
+      {
+        "bin_lower": 0.15,
+        "bin_upper": 0.2,
+        "count": 4069,
+        "responders": 706,
+        "mean_predicted_probability": 0.17505318324709035,
+        "observed_response_rate": 0.1735070041779307,
+        "observed_minus_predicted": -0.0015461790691596589,
+        "observed_rate_wilson_lower_95": 0.16218093359252087,
+        "observed_rate_wilson_upper_95": 0.18544896389694734
+      },
+      {
+        "bin_lower": 0.2,
+        "bin_upper": 0.25,
+        "count": 4347,
+        "responders": 1047,
+        "mean_predicted_probability": 0.22580773760399528,
+        "observed_response_rate": 0.24085576259489302,
+        "observed_minus_predicted": 0.015048024990897746,
+        "observed_rate_wilson_lower_95": 0.22837670363778964,
+        "observed_rate_wilson_upper_95": 0.25379243046559796
+      },
+      {
+        "bin_lower": 0.25,
+        "bin_upper": 0.3,
+        "count": 6217,
+        "responders": 1717,
+        "mean_predicted_probability": 0.27706019238768537,
+        "observed_response_rate": 0.2761782210069165,
+        "observed_minus_predicted": -0.0008819713807688423,
+        "observed_rate_wilson_lower_95": 0.26520506281173406,
+        "observed_rate_wilson_upper_95": 0.28742780551930003
+      },
+      {
+        "bin_lower": 0.3,
+        "bin_upper": 0.4,
+        "count": 10349,
+        "responders": 3611,
+        "mean_predicted_probability": 0.34504131920548453,
+        "observed_response_rate": 0.34892260121750895,
+        "observed_minus_predicted": 0.003881282012024423,
+        "observed_rate_wilson_lower_95": 0.33979729377004214,
+        "observed_rate_wilson_upper_95": 0.35816002428240684
+      },
+      {
+        "bin_lower": 0.4,
+        "bin_upper": 0.5,
+        "count": 2607,
+        "responders": 1091,
+        "mean_predicted_probability": 0.43356582956210193,
+        "observed_response_rate": 0.41848868431146913,
+        "observed_minus_predicted": -0.015077145250632806,
+        "observed_rate_wilson_lower_95": 0.39968572400165947,
+        "observed_rate_wilson_upper_95": 0.4375315077976353
+      },
+      {
+        "bin_lower": 0.5,
+        "bin_upper": 0.6,
+        "count": 294,
+        "responders": 156,
+        "mean_predicted_probability": 0.5249885028054082,
+        "observed_response_rate": 0.5306122448979592,
+        "observed_minus_predicted": 0.0056237420925510095,
+        "observed_rate_wilson_lower_95": 0.47353862911743994,
+        "observed_rate_wilson_upper_95": 0.5868962078299453
+      },
+      {
+        "bin_lower": 0.6,
+        "bin_upper": 0.8,
+        "count": 21,
+        "responders": 14,
+        "mean_predicted_probability": 0.6599109682634597,
+        "observed_response_rate": 0.6666666666666666,
+        "observed_minus_predicted": 0.006755698403206889,
+        "observed_rate_wilson_lower_95": 0.4537345197425524,
+        "observed_rate_wilson_upper_95": 0.8280524739491653
+      }
+    ]
+  },
+  "catboost_configuration": {
+    "configured": {
+      "iterations": 600,
+      "learning_rate": 0.05,
+      "depth": 6,
+      "l2_leaf_reg": 5.0,
+      "loss_function": "Logloss",
+      "random_seed": 42,
+      "thread_count": 4,
+      "task_type": "CPU",
+      "allow_writing_files": false,
+      "verbose": false,
+      "use_best_model": false,
+      "cat_features": [
+        "Gender",
+        "Driving_License",
+        "Region_Code",
+        "Previously_Insured",
+        "Vehicle_Age",
+        "Vehicle_Damage",
+        "Policy_Sales_Channel"
+      ]
+    },
+    "resolved": {
+      "nan_mode": "Min",
+      "eval_metric": "Logloss",
+      "combinations_ctr": [
+        "Borders:CtrBorderCount=15:CtrBorderType=Uniform:TargetBorderCount=1:TargetBorderType=MinEntropy:Prior=0/1:Prior=0.5/1:Prior=1/1",
+        "Counter:CtrBorderCount=15:CtrBorderType=Uniform:Prior=0/1"
+      ],
+      "iterations": 600,
+      "sampling_frequency": "PerTree",
+      "fold_permutation_block": 0,
+      "leaf_estimation_method": "Newton",
+      "random_score_type": "NormalWithModelSizeDecrease",
+      "counter_calc_method": "SkipTest",
+      "grow_policy": "SymmetricTree",
+      "penalties_coefficient": 1,
+      "boosting_type": "Plain",
+      "model_shrink_mode": "Constant",
+      "feature_border_type": "GreedyLogSum",
+      "ctr_leaf_count_limit": 18446744073709551615,
+      "bayesian_matrix_reg": 0.10000000149011612,
+      "one_hot_max_size": 2,
+      "eval_fraction": 0,
+      "force_unit_auto_pair_weights": false,
+      "l2_leaf_reg": 5,
+      "random_strength": 1,
+      "rsm": 1,
+      "boost_from_average": false,
+      "max_ctr_complexity": 4,
+      "model_size_reg": 0.5,
+      "simple_ctr": [
+        "Borders:CtrBorderCount=15:CtrBorderType=Uniform:TargetBorderCount=1:TargetBorderType=MinEntropy:Prior=0/1:Prior=0.5/1:Prior=1/1",
+        "Counter:CtrBorderCount=15:CtrBorderType=Uniform:Prior=0/1"
+      ],
+      "pool_metainfo_options": {
+        "tags": {}
+      },
+      "subsample": 0.800000011920929,
+      "use_best_model": false,
+      "class_names": [
+        0,
+        1
+      ],
+      "random_seed": 42,
+      "depth": 6,
+      "ctr_target_border_count": 1,
+      "posterior_sampling": false,
+      "has_time": false,
+      "store_all_simple_ctr": false,
+      "border_count": 254,
+      "classes_count": 0,
+      "auto_class_weights": "None",
+      "sparse_features_conflict_fraction": 0,
+      "leaf_estimation_backtracking": "AnyImprovement",
+      "best_model_min_trees": 1,
+      "model_shrink_rate": 0,
+      "min_data_in_leaf": 1,
+      "loss_function": "Logloss",
+      "learning_rate": 0.05000000074505806,
+      "score_function": "Cosine",
+      "task_type": "CPU",
+      "leaf_estimation_iterations": 10,
+      "bootstrap_type": "MVS",
+      "max_leaves": 64,
+      "permutation_count": 4
+    },
+    "early_stopping": false,
+    "configured_iteration_limit": 600,
+    "best_iteration": null,
+    "tree_count": 600
+  },
+  "catboost_native_importance": [
+    {
+      "rank": 1,
+      "feature": "Previously_Insured",
+      "importance": 56.42813942785731
+    },
+    {
+      "rank": 2,
+      "feature": "Vehicle_Damage",
+      "importance": 14.685285364569962
+    },
+    {
+      "rank": 3,
+      "feature": "Age",
+      "importance": 11.216746768834122
+    },
+    {
+      "rank": 4,
+      "feature": "Policy_Sales_Channel",
+      "importance": 6.837268956697673
+    },
+    {
+      "rank": 5,
+      "feature": "Vehicle_Age",
+      "importance": 3.3732365228577748
+    },
+    {
+      "rank": 6,
+      "feature": "Annual_Premium",
+      "importance": 3.040286659352512
+    },
+    {
+      "rank": 7,
+      "feature": "Region_Code",
+      "importance": 2.5911047756645726
+    },
+    {
+      "rank": 8,
+      "feature": "Vintage",
+      "importance": 0.9243320937362315
+    },
+    {
+      "rank": 9,
+      "feature": "Gender",
+      "importance": 0.779254690869169
+    },
+    {
+      "rank": 10,
+      "feature": "Driving_License",
+      "importance": 0.12434473956074905
+    }
+  ],
+  "topk_comparison": [
+    {
+      "model": "logistic",
+      "segment": "top_5_pct",
+      "selected_count": 3812,
+      "responders_captured": 1408,
+      "responder_capture_rate": 0.15071719117961893,
+      "response_rate": 0.36935991605456453,
+      "lift": 3.013632147453545
+    },
+    {
+      "model": "logistic",
+      "segment": "top_10_pct",
+      "selected_count": 7623,
+      "responders_captured": 2765,
+      "responder_capture_rate": 0.29597516591736245,
+      "response_rate": 0.3627180899908173,
+      "lift": 2.959441046379798
+    },
+    {
+      "model": "logistic",
+      "segment": "top_20_pct",
+      "selected_count": 15245,
+      "responders_captured": 5239,
+      "responder_capture_rate": 0.5608006850781417,
+      "response_rate": 0.3436536569367006,
+      "lift": 2.8038930677616345
+    },
+    {
+      "model": "catboost",
+      "segment": "top_5_pct",
+      "selected_count": 3812,
+      "responders_captured": 1590,
+      "responder_capture_rate": 0.170199100834939,
+      "response_rate": 0.41710388247639035,
+      "lift": 3.4031783483317732
+    },
+    {
+      "model": "catboost",
+      "segment": "top_10_pct",
+      "selected_count": 7623,
+      "responders_captured": 3013,
+      "responder_capture_rate": 0.32252194390922717,
+      "response_rate": 0.3952512134330316,
+      "lift": 3.2248809666337546
+    },
+    {
+      "model": "catboost",
+      "segment": "top_20_pct",
+      "selected_count": 15245,
+      "responders_captured": 5441,
+      "responder_capture_rate": 0.5824234639263541,
+      "response_rate": 0.3569039029189898,
+      "lift": 2.912002706946183
+    }
+  ],
+  "calibration_diagnostics": {
+    "probability_bin_edges": [
+      0.0,
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.8,
+      1.0
+    ],
+    "interval_method": "95% Wilson observed-rate interval; descriptive bin support, not a calibration guarantee",
+    "sparse_plot_marker_count_threshold": 100,
+    "models": {
+      "logistic": {
+        "weighted_absolute_bin_gap": 0.0055858696909986336,
+        "log_loss": 0.26834523630426715,
+        "brier_score": 0.08786735096988833,
+        "populated_bins": 10,
+        "sparse_bins": [
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6,
+            "count": 53,
+            "responders": 19,
+            "mean_predicted_probability": 0.5201778496208274,
+            "observed_response_rate": 0.3584905660377358,
+            "observed_minus_predicted": -0.16168728358309153,
+            "observed_rate_wilson_lower_95": 0.2430195255280876,
+            "observed_rate_wilson_upper_95": 0.49308858444640524
+          },
+          {
+            "bin_lower": 0.6,
+            "bin_upper": 0.8,
+            "count": 1,
+            "responders": 0,
+            "mean_predicted_probability": 0.6035909642870789,
+            "observed_response_rate": 0.0,
+            "observed_minus_predicted": -0.6035909642870789,
+            "observed_rate_wilson_lower_95": 0.0,
+            "observed_rate_wilson_upper_95": 0.7934506856227626
+          }
+        ]
+      },
+      "catboost": {
+        "weighted_absolute_bin_gap": 0.0024546414735011103,
+        "log_loss": 0.2639992236972073,
+        "brier_score": 0.08639101705449588,
+        "populated_bins": 10,
+        "sparse_bins": [
+          {
+            "bin_lower": 0.6,
+            "bin_upper": 0.8,
+            "count": 21,
+            "responders": 14,
+            "mean_predicted_probability": 0.6599109682634597,
+            "observed_response_rate": 0.6666666666666666,
+            "observed_minus_predicted": 0.006755698403206889,
+            "observed_rate_wilson_lower_95": 0.4537345197425524,
+            "observed_rate_wilson_upper_95": 0.8280524739491653
+          }
+        ]
+      }
+    },
+    "findings": [
+      "CatBoost has lower holdout log loss and Brier score and a smaller weighted absolute bin gap in these predeclared bins; this does not establish calibration in future campaigns.",
+      "Logistic bin [0.4,0.5): 1602 observations, mean predicted 0.42867 versus observed 0.37578, suggesting overprediction in this segment.",
+      "Logistic bins above 0.5 have 53 and 1 observations; CatBoost [0.6,0.8) has 21. Sparse tails are not reliable evidence of calibration.",
+      "Similar mean prediction and overall validation prevalence alone does not imply good calibration. Brier and log loss jointly reflect probability estimation and discrimination.",
+      "Neither model was recalibrated. Empty bins are omitted; sparse bins are marked separately and not joined to reliability lines."
+    ]
+  },
+  "cv_results": [
+    {
+      "fold": 1,
+      "model": "logistic",
+      "training_count": 304887,
+      "validation_count": 76222,
+      "training_response_rate": 0.12256344153735646,
+      "validation_response_rate": 0.12256303954238934,
+      "training_index_sha256": "4441bcc258881c53a771fc8b06c7bcb4e05a2bf2b5c03dbdba1ac5f7ef2017b1",
+      "validation_index_sha256": "b915f999c0ec60d69c039e8a35feb1a4ab38064240ff982ddb9e97ed2cc7bb5d",
+      "roc_auc": 0.8483760348388049,
+      "average_precision": 0.332630925375357,
+      "top_10_lift": 2.926261056348053,
+      "top_10_responder_capture_rate": 0.29265681866837934,
+      "fit_and_score_seconds": 2.3028192999991006,
+      "warnings": "",
+      "training_premium_scaler_mean": 30526.50237629023
+    },
+    {
+      "fold": 1,
+      "model": "catboost",
+      "training_count": 304887,
+      "validation_count": 76222,
+      "training_response_rate": 0.12256344153735646,
+      "validation_response_rate": 0.12256303954238934,
+      "training_index_sha256": "4441bcc258881c53a771fc8b06c7bcb4e05a2bf2b5c03dbdba1ac5f7ef2017b1",
+      "validation_index_sha256": "b915f999c0ec60d69c039e8a35feb1a4ab38064240ff982ddb9e97ed2cc7bb5d",
+      "roc_auc": 0.8581179147729193,
+      "average_precision": 0.37231832212368354,
+      "top_10_lift": 3.2270216111519314,
+      "top_10_responder_capture_rate": 0.3227360308285164,
+      "fit_and_score_seconds": 125.52930609999748,
+      "warnings": "",
+      "fit_rows": 304887
+    },
+    {
+      "fold": 2,
+      "model": "logistic",
+      "training_count": 304887,
+      "validation_count": 76222,
+      "training_response_rate": 0.12256344153735646,
+      "validation_response_rate": 0.12256303954238934,
+      "training_index_sha256": "c56c3c4fc8028c0355ceab697d7136294871c54472afc52e7b6296118c3eba84",
+      "validation_index_sha256": "d64ca6e17dcb44f51b222aceef517b18722c2977c348a734e594a263d6e572fa",
+      "roc_auc": 0.848315775677114,
+      "average_precision": 0.33283994036128134,
+      "top_10_lift": 2.931612667643496,
+      "top_10_responder_capture_rate": 0.2931920359666024,
+      "fit_and_score_seconds": 2.070136599999387,
+      "warnings": "",
+      "training_premium_scaler_mean": 30568.026698416135
+    },
+    {
+      "fold": 2,
+      "model": "catboost",
+      "training_count": 304887,
+      "validation_count": 76222,
+      "training_response_rate": 0.12256344153735646,
+      "validation_response_rate": 0.12256303954238934,
+      "training_index_sha256": "c56c3c4fc8028c0355ceab697d7136294871c54472afc52e7b6296118c3eba84",
+      "validation_index_sha256": "d64ca6e17dcb44f51b222aceef517b18722c2977c348a734e594a263d6e572fa",
+      "roc_auc": 0.8573626381769732,
+      "average_precision": 0.36986813067999524,
+      "top_10_lift": 3.2387951560019053,
+      "top_10_responder_capture_rate": 0.3239135088846071,
+      "fit_and_score_seconds": 126.15929329999926,
+      "warnings": "",
+      "fit_rows": 304887
+    },
+    {
+      "fold": 3,
+      "model": "logistic",
+      "training_count": 304887,
+      "validation_count": 76222,
+      "training_response_rate": 0.12256344153735646,
+      "validation_response_rate": 0.12256303954238934,
+      "training_index_sha256": "5d42078693ddebd6243d8a8007d8b811b1fb1914edb62a812940032e0111b8f8",
+      "validation_index_sha256": "212f62cd0382a20404c2517fcb7f571a61976aad99662708a498ff97755c6e6a",
+      "roc_auc": 0.8482109465509984,
+      "average_precision": 0.3349297621810696,
+      "top_10_lift": 2.9391049234571156,
+      "top_10_responder_capture_rate": 0.2939413401841148,
+      "fit_and_score_seconds": 2.5672016000025906,
+      "warnings": "",
+      "training_premium_scaler_mean": 30589.892419158572
+    },
+    {
+      "fold": 3,
+      "model": "catboost",
+      "training_count": 304887,
+      "validation_count": 76222,
+      "training_response_rate": 0.12256344153735646,
+      "validation_response_rate": 0.12256303954238934,
+      "training_index_sha256": "5d42078693ddebd6243d8a8007d8b811b1fb1914edb62a812940032e0111b8f8",
+      "validation_index_sha256": "212f62cd0382a20404c2517fcb7f571a61976aad99662708a498ff97755c6e6a",
+      "roc_auc": 0.8588721446221161,
+      "average_precision": 0.37567263760093716,
+      "top_10_lift": 3.2366545114837284,
+      "top_10_responder_capture_rate": 0.3236994219653179,
+      "fit_and_score_seconds": 128.883988900001,
+      "warnings": "",
+      "fit_rows": 304887
+    },
+    {
+      "fold": 4,
+      "model": "logistic",
+      "training_count": 304887,
+      "validation_count": 76222,
+      "training_response_rate": 0.12256344153735646,
+      "validation_response_rate": 0.12256303954238934,
+      "training_index_sha256": "440f47cc9427110e0190e3852b7fdeef0ed3d7030cdef20e047820d30abeed7c",
+      "validation_index_sha256": "4925059a09e19a723be787a2f6a43ae4b072f8020915521f9a3331e2fc06de31",
+      "roc_auc": 0.8500855603430615,
+      "average_precision": 0.3407824261966967,
+      "top_10_lift": 3.0183087706296674,
+      "top_10_responder_capture_rate": 0.3018625561978163,
+      "fit_and_score_seconds": 2.302341599999636,
+      "warnings": "",
+      "training_premium_scaler_mean": 30566.796865724024
+    },
+    {
+      "fold": 4,
+      "model": "catboost",
+      "training_count": 304887,
+      "validation_count": 76222,
+      "training_response_rate": 0.12256344153735646,
+      "validation_response_rate": 0.12256303954238934,
+      "training_index_sha256": "440f47cc9427110e0190e3852b7fdeef0ed3d7030cdef20e047820d30abeed7c",
+      "validation_index_sha256": "4925059a09e19a723be787a2f6a43ae4b072f8020915521f9a3331e2fc06de31",
+      "roc_auc": 0.8598192903774075,
+      "average_precision": 0.37587176312745396,
+      "top_10_lift": 3.2773267573290927,
+      "top_10_responder_capture_rate": 0.3277670734318133,
+      "fit_and_score_seconds": 126.38168679999944,
+      "warnings": "",
+      "fit_rows": 304887
+    },
+    {
+      "fold": 5,
+      "model": "logistic",
+      "training_count": 304888,
+      "validation_count": 76221,
+      "training_response_rate": 0.12256303954238934,
+      "validation_response_rate": 0.12256464753808005,
+      "training_index_sha256": "7be96a122481066a22b2552f75d28173dd7013be5706c5fc41ec59ae9c3e2823",
+      "validation_index_sha256": "b0e7e83efa5bef8460b79a7753668ab8df36a0124cc03c979484de7ee7142103",
+      "roc_auc": 0.8516890370835557,
+      "average_precision": 0.34179928202107057,
+      "top_10_lift": 2.9893708498542972,
+      "top_10_responder_capture_rate": 0.2989723827874117,
+      "fit_and_score_seconds": 2.2732197000004817,
+      "warnings": "",
+      "training_premium_scaler_mean": 30570.729526908242
+    },
+    {
+      "fold": 5,
+      "model": "catboost",
+      "training_count": 304888,
+      "validation_count": 76221,
+      "training_response_rate": 0.12256303954238934,
+      "validation_response_rate": 0.12256464753808005,
+      "training_index_sha256": "7be96a122481066a22b2552f75d28173dd7013be5706c5fc41ec59ae9c3e2823",
+      "validation_index_sha256": "b0e7e83efa5bef8460b79a7753668ab8df36a0124cc03c979484de7ee7142103",
+      "roc_auc": 0.8605014864522262,
+      "average_precision": 0.37707174128224763,
+      "top_10_lift": 3.287986842374651,
+      "top_10_responder_capture_rate": 0.32883750802825945,
+      "fit_and_score_seconds": 123.78351920000568,
+      "warnings": "",
+      "fit_rows": 304888
+    }
+  ],
+  "cv_summary": [
+    {
+      "model": "catboost",
+      "metric": "roc_auc",
+      "completed_folds": 5,
+      "mean": 0.8589346948803284,
+      "std": 0.0012629083082758015
+    },
+    {
+      "model": "catboost",
+      "metric": "average_precision",
+      "completed_folds": 5,
+      "mean": 0.3741605189628635,
+      "std": 0.0029794446262904556
+    },
+    {
+      "model": "catboost",
+      "metric": "top_10_lift",
+      "completed_folds": 5,
+      "mean": 3.253556975668262,
+      "std": 0.027194431539422238
+    },
+    {
+      "model": "catboost",
+      "metric": "top_10_responder_capture_rate",
+      "completed_folds": 5,
+      "mean": 0.3253907086277029,
+      "std": 0.0027210944334380024
+    },
+    {
+      "model": "logistic",
+      "metric": "roc_auc",
+      "completed_folds": 5,
+      "mean": 0.849335470898707,
+      "std": 0.001526987137107323
+    },
+    {
+      "model": "logistic",
+      "metric": "average_precision",
+      "completed_folds": 5,
+      "mean": 0.3365964672270951,
+      "std": 0.0043933602247457435
+    },
+    {
+      "model": "logistic",
+      "metric": "top_10_lift",
+      "completed_folds": 5,
+      "mean": 2.960931653586526,
+      "std": 0.04073997067463743
+    },
+    {
+      "model": "logistic",
+      "metric": "top_10_responder_capture_rate",
+      "completed_folds": 5,
+      "mean": 0.2961250267608649,
+      "std": 0.004075109502187818
+    }
+  ],
+  "elapsed_seconds": 776.4999983999951,
+  "cv_complete": true,
+  "raw_csv_sha256_unchanged": true,
+  "verification": {
+    "tests": {
+      "command": [
+        "C:\\Users\\User\\orca\\workspaces\\health-insurance-cross-sell-ml\\loggerhead\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_preprocessing_is_fitted_on_training_only (test_baseline.BaselineTests.test_preprocessing_is_fitted_on_training_only) ... ok\ntest_split_excludes_id_and_target_from_predictors (test_baseline.BaselineTests.test_split_excludes_id_and_target_from_predictors) ... ok\ntest_split_is_reproducible_and_stratified (test_baseline.BaselineTests.test_split_is_reproducible_and_stratified) ... ok\ntest_top_k_metrics_uses_ceil_and_correct_denominators (test_baseline.BaselineTests.test_top_k_metrics_uses_ceil_and_correct_denominators) ... ok\ntest_unseen_sales_channel_does_not_crash (test_baseline.BaselineTests.test_unseen_sales_channel_does_not_crash) ... ok\ntest_small_fixture_trains_scores_and_excludes_id (test_catboost.CatBoostTests.test_small_fixture_trains_scores_and_excludes_id) ... ok\ntest_unseen_categories_and_numeric_code_representations (test_catboost.CatBoostTests.test_unseen_categories_and_numeric_code_representations) ... ok\ntest_validation_is_not_supplied_to_fit (test_catboost.CatBoostTests.test_validation_is_not_supplied_to_fit) ... ok\ntest_ap_is_named_correctly_and_probability_quantiles_present (test_model_comparison.ComparisonTests.test_ap_is_named_correctly_and_probability_quantiles_present) ... ok\ntest_calibration_omits_empty_bins_and_counts_all_rows (test_model_comparison.ComparisonTests.test_calibration_omits_empty_bins_and_counts_all_rows) ... ok\ntest_calibration_singleton_does_not_imply_zero_uncertainty (test_model_comparison.ComparisonTests.test_calibration_singleton_does_not_imply_zero_uncertainty) ... ok\ntest_cv_fit_calls_use_fold_training_rows_only (test_model_comparison.ComparisonTests.test_cv_fit_calls_use_fold_training_rows_only) ... ok\ntest_folds_are_stratified_and_cover_each_row_once (test_model_comparison.ComparisonTests.test_folds_are_stratified_and_cover_each_row_once) ... ok\ntest_logistic_handles_both_known_test_only_channel_codes (test_model_comparison.ComparisonTests.test_logistic_handles_both_known_test_only_channel_codes) ... ok\ntest_models_use_identical_holdout_indices (test_model_comparison.ComparisonTests.test_models_use_identical_holdout_indices) ... ok\ntest_real_cv_preprocessing_is_fold_local (test_model_comparison.ComparisonTests.test_real_cv_preprocessing_is_fold_local) ... ok\n\n----------------------------------------------------------------------\nRan 16 tests in 0.965s\n\nOK\n"
+    },
+    "git_diff_check": {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "git_status": {
+      "command": [
+        "git",
+        "status",
+        "--short",
+        "--untracked-files=all"
+      ],
+      "returncode": 0,
+      "stdout": "?? outputs/figures/calibration.png\n?? outputs/figures/matplotlib_config/fontlist-v3.11.0.json\n?? outputs/logs/overnight_catboost_robustness.log\n?? outputs/metrics/baseline_integrity.json\n?? outputs/metrics/calibration.csv\n?? outputs/metrics/calibration_summary.json\n?? outputs/metrics/catboost_feature_importance.csv\n?? outputs/metrics/catboost_holdout.json\n?? outputs/metrics/catboost_parameters.json\n?? outputs/metrics/cv_results.csv\n?? outputs/metrics/cv_summary.csv\n?? outputs/metrics/holdout_indices.csv\n?? outputs/metrics/logistic_holdout.json\n?? outputs/metrics/run_manifest.json\n?? outputs/metrics/topk_comparison.csv\n?? outputs/metrics/verification.json\n?? src/compare_models.py\n?? src/data.py\n?? src/evaluate.py\n?? src/train.py\n?? src/train_catboost.py\n?? tests/test_baseline.py\n?? tests/test_catboost.py\n?? tests/test_model_comparison.py\n",
+      "stderr": ""
+    },
+    "artifact_checks": {
+      "holdout_rows_identical": true,
+      "holdout_index_file_matches": true,
+      "cv_all_ten_fits": true,
+      "cv_identical_fold_indices": true,
+      "cv_fold_local_numeric_means": true,
+      "cv_cat_training_row_counts": true,
+      "cv_summary_mean_std": true,
+      "calibration_count_totals": true,
+      "calibration_no_empty_bins": true,
+      "calibration_weighted_means": true,
+      "calibration_wilson_contains_observed": true,
+      "topk_consistency": true,
+      "importance_normalized": true,
+      "fixed_catboost_600_no_selection": true,
+      "raw_csv_hashes_unchanged": true,
+      "no_training_warnings": true,
+      "untracked_source_whitespace_clean": true
+    }
+  },
+  "calibration_findings": [
+    "CatBoost has lower holdout log loss and Brier score and a smaller weighted absolute bin gap in these predeclared bins; this does not establish calibration in future campaigns.",
+    "Logistic bin [0.4,0.5): 1602 observations, mean predicted 0.42867 versus observed 0.37578, suggesting overprediction in this segment.",
+    "Logistic bins above 0.5 have 53 and 1 observations; CatBoost [0.6,0.8) has 21. Sparse tails are not reliable evidence of calibration.",
+    "Similar mean prediction and overall validation prevalence alone does not imply good calibration. Brier and log loss jointly reflect probability estimation and discrimination.",
+    "Neither model was recalibrated. Empty bins are omitted; sparse bins are marked separately and not joined to reliability lines."
+  ],
+  "actual_git_branch": "GISH123/case-health-insurance-cross",
+  "requested_worktree_or_branch": "GISH123/loggerhead",
+  "repository_note": "Actual branch is GISH123/case-health-insurance-cross; working directory is loggerhead. No branch/worktree changes.",
+  "baseline_files_modified": [],
+  "logistic_effective_regularization": "L2: C=1.0, l1_ratio=0.0, class_weight=None; penalty parameter is deprecated in installed sklearn 1.9.1.",
+  "cross_validation_standard_deviation_definition": "Sample standard deviation across 5 folds, ddof=1; descriptive dispersion, not a confidence interval.",
+  "human_review_items": [
+    "Confirm Previously_Insured and Vehicle_Damage are available before campaign scoring.",
+    "Confirm Response meaning (interest versus purchase), observation window and campaign eligibility.",
+    "Resolve Annual_Premium product/currency and meaning of 2630; no suspicious values removed.",
+    "Confirm Vintage units, channel/region code definitions, customer keys and any hidden time structure.",
+    "Prior exact predictor duplicates/conflicting labels do not establish repeated customer identity.",
+    "Choose capacity via Top-K; 0.5 is diagnostic only; no campaign budget/cost/revenue/ROI assumed.",
+    "Review actual branch/worktree naming discrepancy before future Git integration.",
+    "CV uses all labeled training rows; fixed parameters were not selected from CV. No independent external or temporal test."
+  ],
+  "optional_actions_skipped": [],
+  "artifact_checks": {
+    "holdout_rows_identical": true,
+    "holdout_index_file_matches": true,
+    "cv_all_ten_fits": true,
+    "cv_identical_fold_indices": true,
+    "cv_fold_local_numeric_means": true,
+    "cv_cat_training_row_counts": true,
+    "cv_summary_mean_std": true,
+    "calibration_count_totals": true,
+    "calibration_no_empty_bins": true,
+    "calibration_weighted_means": true,
+    "calibration_wilson_contains_observed": true,
+    "topk_consistency": true,
+    "importance_normalized": true,
+    "fixed_catboost_600_no_selection": true,
+    "raw_csv_hashes_unchanged": true,
+    "no_training_warnings": true,
+    "untracked_source_whitespace_clean": true
+  },
+  "artifact_status": "PASS",
+  "model_run_elapsed_seconds": 776.4999983999951,
+  "task_elapsed_since_initial_integrity_seconds": 1429.9616384506226,
+  "completed_at_utc": "2026-10-04T19:41:50.037288+00:00",
+  "files_created_this_task": [
+    "outputs/figures/calibration.png",
+    "outputs/figures/matplotlib_config/fontlist-v3.11.0.json",
+    "outputs/logs/overnight_catboost_robustness.log",
+    "outputs/metrics/baseline_integrity.json",
+    "outputs/metrics/calibration.csv",
+    "outputs/metrics/calibration_summary.json",
+    "outputs/metrics/catboost_feature_importance.csv",
+    "outputs/metrics/catboost_holdout.json",
+    "outputs/metrics/catboost_parameters.json",
+    "outputs/metrics/cv_results.csv",
+    "outputs/metrics/cv_summary.csv",
+    "outputs/metrics/holdout_indices.csv",
+    "outputs/metrics/logistic_holdout.json",
+    "outputs/metrics/run_manifest.json",
+    "outputs/metrics/topk_comparison.csv",
+    "outputs/metrics/verification.json",
+    "src/compare_models.py",
+    "src/train_catboost.py",
+    "tests/test_catboost.py",
+    "tests/test_model_comparison.py"
+  ]
+}

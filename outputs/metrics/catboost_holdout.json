@@ -1,0 +1,176 @@
+{
+  "validation_count": 76222,
+  "responders": 9342,
+  "overall_response_rate": 0.12256303954238934,
+  "roc_auc": 0.8586921610000215,
+  "average_precision": 0.3709761097553016,
+  "reporting_threshold": 0.5,
+  "precision": 0.5396825396825397,
+  "recall": 0.018197388139584672,
+  "f1": 0.03520762141451796,
+  "confusion_matrix_tn_fp_fn_tp": [
+    [
+      66735,
+      145
+    ],
+    [
+      9172,
+      170
+    ]
+  ],
+  "probability_summary": {
+    "min": 3.357619271245442e-05,
+    "p01": 9.728644034632257e-05,
+    "p25": 0.00034045033295937026,
+    "median": 0.034826180463746526,
+    "mean": 0.1222002161889494,
+    "p75": 0.25440814890315666,
+    "p99": 0.4629169937490089,
+    "max": 0.776543455432776,
+    "p05": 0.00019147028839113599,
+    "p95": 0.386972235908263
+  },
+  "ranking": {
+    "top_5_pct": {
+      "selected_count": 3812,
+      "responders_captured": 1590,
+      "responder_capture_rate": 0.170199100834939,
+      "response_rate": 0.41710388247639035,
+      "lift": 3.4031783483317732
+    },
+    "top_10_pct": {
+      "selected_count": 7623,
+      "responders_captured": 3013,
+      "responder_capture_rate": 0.32252194390922717,
+      "response_rate": 0.3952512134330316,
+      "lift": 3.2248809666337546
+    },
+    "top_20_pct": {
+      "selected_count": 15245,
+      "responders_captured": 5441,
+      "responder_capture_rate": 0.5824234639263541,
+      "response_rate": 0.3569039029189898,
+      "lift": 2.912002706946183
+    }
+  },
+  "log_loss": 0.2639992236972073,
+  "brier_score": 0.08639101705449588,
+  "threshold_note": "Threshold 0.5 diagnostic only",
+  "fit_and_score_seconds": 125.69689779999317,
+  "warnings": [],
+  "training_count": 304887,
+  "training_index_sha256": "f6195f3d12b926793ecb33207c9795fb7547d1d2ace4f1b796dec4cd0fddacc0",
+  "validation_index_sha256": "d41cffcebdc47873501b2e7e1a69ccc6d73c7d083af2a857cb1af33a6536ab7a",
+  "calibration": [
+    {
+      "bin_lower": 0.0,
+      "bin_upper": 0.05,
+      "count": 39833,
+      "responders": 164,
+      "mean_predicted_probability": 0.00427647774572681,
+      "observed_response_rate": 0.004117189265182135,
+      "observed_minus_predicted": -0.00015928848054467485,
+      "observed_rate_wilson_lower_95": 0.003534394985421321,
+      "observed_rate_wilson_upper_95": 0.004795619309605516
+    },
+    {
+      "bin_lower": 0.05,
+      "bin_upper": 0.1,
+      "count": 4164,
+      "responders": 300,
+      "mean_predicted_probability": 0.0768052425622815,
+      "observed_response_rate": 0.07204610951008646,
+      "observed_minus_predicted": -0.004759133052195039,
+      "observed_rate_wilson_lower_95": 0.06458080387242582,
+      "observed_rate_wilson_upper_95": 0.0803002970012032
+    },
+    {
+      "bin_lower": 0.1,
+      "bin_upper": 0.15,
+      "count": 4321,
+      "responders": 536,
+      "mean_predicted_probability": 0.12461897151671479,
+      "observed_response_rate": 0.12404535987040037,
+      "observed_minus_predicted": -0.0005736116463144203,
+      "observed_rate_wilson_lower_95": 0.11454949148666513,
+      "observed_rate_wilson_upper_95": 0.13420909748460702
+    },
+    {
+      "bin_lower": 0.15,
+      "bin_upper": 0.2,
+      "count": 4069,
+      "responders": 706,
+      "mean_predicted_probability": 0.17505318324709035,
+      "observed_response_rate": 0.1735070041779307,
+      "observed_minus_predicted": -0.0015461790691596589,
+      "observed_rate_wilson_lower_95": 0.16218093359252087,
+      "observed_rate_wilson_upper_95": 0.18544896389694734
+    },
+    {
+      "bin_lower": 0.2,
+      "bin_upper": 0.25,
+      "count": 4347,
+      "responders": 1047,
+      "mean_predicted_probability": 0.22580773760399528,
+      "observed_response_rate": 0.24085576259489302,
+      "observed_minus_predicted": 0.015048024990897746,
+      "observed_rate_wilson_lower_95": 0.22837670363778964,
+      "observed_rate_wilson_upper_95": 0.25379243046559796
+    },
+    {
+      "bin_lower": 0.25,
+      "bin_upper": 0.3,
+      "count": 6217,
+      "responders": 1717,
+      "mean_predicted_probability": 0.27706019238768537,
+      "observed_response_rate": 0.2761782210069165,
+      "observed_minus_predicted": -0.0008819713807688423,
+      "observed_rate_wilson_lower_95": 0.26520506281173406,
+      "observed_rate_wilson_upper_95": 0.28742780551930003
+    },
+    {
+      "bin_lower": 0.3,
+      "bin_upper": 0.4,
+      "count": 10349,
+      "responders": 3611,
+      "mean_predicted_probability": 0.34504131920548453,
+      "observed_response_rate": 0.34892260121750895,
+      "observed_minus_predicted": 0.003881282012024423,
+      "observed_rate_wilson_lower_95": 0.33979729377004214,
+      "observed_rate_wilson_upper_95": 0.35816002428240684
+    },
+    {
+      "bin_lower": 0.4,
+      "bin_upper": 0.5,
+      "count": 2607,
+      "responders": 1091,
+      "mean_predicted_probability": 0.43356582956210193,
+      "observed_response_rate": 0.41848868431146913,
+      "observed_minus_predicted": -0.015077145250632806,
+      "observed_rate_wilson_lower_95": 0.39968572400165947,
+      "observed_rate_wilson_upper_95": 0.4375315077976353
+    },
+    {
+      "bin_lower": 0.5,
+      "bin_upper": 0.6,
+      "count": 294,
+      "responders": 156,
+      "mean_predicted_probability": 0.5249885028054082,
+      "observed_response_rate": 0.5306122448979592,
+      "observed_minus_predicted": 0.0056237420925510095,
+      "observed_rate_wilson_lower_95": 0.47353862911743994,
+      "observed_rate_wilson_upper_95": 0.5868962078299453
+    },
+    {
+      "bin_lower": 0.6,
+      "bin_upper": 0.8,
+      "count": 21,
+      "responders": 14,
+      "mean_predicted_probability": 0.6599109682634597,
+      "observed_response_rate": 0.6666666666666666,
+      "observed_minus_predicted": 0.006755698403206889,
+      "observed_rate_wilson_lower_95": 0.4537345197425524,
+      "observed_rate_wilson_upper_95": 0.8280524739491653
+    }
+  ]
+}

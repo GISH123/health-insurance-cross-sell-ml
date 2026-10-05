@@ -1,0 +1,104 @@
+{
+  "status": "PASS",
+  "checks": {
+    "baseline_data_module_exists": true,
+    "split_sizes": true,
+    "validation_responders": true,
+    "id_excluded": true,
+    "target_excluded": true,
+    "roc_auc_reproduced": true,
+    "ap_reproduced": true,
+    "topk_independent": true,
+    "no_convergence_warnings": true
+  },
+  "python": "3.14.0 (tags/v3.14.0:ebf955d, Oct  7 2025, 10:15:03) [MSC v.1944 64 bit (AMD64)]",
+  "versions": {
+    "pandas": "3.0.6",
+    "numpy": "2.5.3",
+    "sklearn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "catboost": "1.2.10"
+  },
+  "warnings": [],
+  "baseline_metrics": {
+    "validation_count": 76222,
+    "responders": 9342,
+    "overall_response_rate": 0.12256303954238934,
+    "roc_auc": 0.8500033851213687,
+    "average_precision": 0.33832130516334624,
+    "reporting_threshold": 0.5,
+    "precision": 0.35185185185185186,
+    "recall": 0.0020338257332476986,
+    "f1": 0.004044274159216688,
+    "confusion_matrix_tn_fp_fn_tp": [
+      [
+        66845,
+        35
+      ],
+      [
+        9323,
+        19
+      ]
+    ],
+    "probability_summary": {
+      "min": 4.762773935230991e-05,
+      "p01": 0.00016091785492582269,
+      "p25": 0.0005481740588136558,
+      "median": 0.04193672597897275,
+      "mean": 0.12224066847650637,
+      "p75": 0.25654541031089795,
+      "p99": 0.4260154154445,
+      "max": 0.6035909642870789
+    },
+    "ranking": {
+      "top_5_pct": {
+        "selected_count": 3812,
+        "responders_captured": 1408,
+        "responder_capture_rate": 0.15071719117961893,
+        "response_rate": 0.36935991605456453,
+        "lift": 3.013632147453545
+      },
+      "top_10_pct": {
+        "selected_count": 7623,
+        "responders_captured": 2765,
+        "responder_capture_rate": 0.29597516591736245,
+        "response_rate": 0.3627180899908173,
+        "lift": 2.959441046379798
+      },
+      "top_20_pct": {
+        "selected_count": 15245,
+        "responders_captured": 5239,
+        "responder_capture_rate": 0.5608006850781417,
+        "response_rate": 0.3436536569367006,
+        "lift": 2.8038930677616345
+      }
+    }
+  },
+  "logistic_parameters": {
+    "C": 1.0,
+    "class_weight": null,
+    "dual": false,
+    "fit_intercept": true,
+    "intercept_scaling": 1,
+    "l1_ratio": 0.0,
+    "max_iter": 1000,
+    "n_jobs": null,
+    "penalty": "deprecated",
+    "random_state": 42,
+    "solver": "lbfgs",
+    "tol": 0.0001,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "raw_sha256": {
+    "data\\raw\\train.csv": "3b60d1072851756367817fb155e6e755ffa79509daa806720719bc395dfbea7d",
+    "data\\raw\\test.csv": "c6a181deaec964fc30de2238a2d7533f3872fb74ad8b2a481ef1bfc3bbfc6ecc"
+  },
+  "notes": [
+    "src/data.py exists, is imported by src/train.py, and is currently untracked with the other baseline files.",
+    "Source inspection verifies one stratified 80/20 split before fit, seed 42; no test.csv reads in modeling.",
+    "Region_Code and Policy_Sales_Channel are included in OneHotEncoder(handle_unknown=ignore).",
+    "Numeric scaling retains 2630; no filtering or recoding.",
+    "Independent top-40% example: 2 selected, 1 responder, capture .5, response .5, lift 1.25."
+  ]
+}
