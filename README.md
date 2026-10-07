@@ -8,7 +8,7 @@ The goal goes beyond binary classification: rank customers by response probabili
 >
 > [https://www.analyticsvidhya.com/datahack/contest/janatahack-cross-sell-prediction/](https://www.analyticsvidhya.com/datahack/contest/janatahack-cross-sell-prediction/)
 >
-> ![](orca-paste-1791377969782-bbcfdaa4-9133-47ac-90cb-5b33be6de0af.png)
+> ![](outputs/figures/analytics_vidhya_hidden_test_score.png)
 >
 > <sub>Late submission; historical rank-equivalent only, not an official competition placement.</sub>
 
